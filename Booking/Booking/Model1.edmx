@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ebookingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="d_destination">
+          <Key>
+            <PropertyRef Name="d_city" />
+            <PropertyRef Name="d_country" />
+          </Key>
+          <Property Name="d_city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="d_country" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="h_hotel">
+          <Key>
+            <PropertyRef Name="h_hotelid" />
+          </Key>
+          <Property Name="h_hotelid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="h_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="h_stars" Type="int" Nullable="false" />
+          <Property Name="h_address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="h_zip" Type="int" Nullable="false" />
+          <Property Name="h_d_city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="h_description" Type="text" />
+          <Property Name="h_d_country" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="r_room">
+          <Key>
+            <PropertyRef Name="r_number" />
+          </Key>
+          <Property Name="r_number" Type="int" Nullable="false" />
+          <Property Name="r_h_hotel" Type="int" Nullable="false" />
+          <Property Name="r_beds" Type="int" />
+          <Property Name="r_price" Type="decimal" Precision="4" Scale="0" />
+          <Property Name="r_description" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ra_rating">
+          <Key>
+            <PropertyRef Name="r_rating" />
+          </Key>
+          <Property Name="r_rating" Type="int" Nullable="false" />
+          <Property Name="r_comment" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="re_reservation">
+          <Key>
+            <PropertyRef Name="re_reservationID" />
+          </Key>
+          <Property Name="re_reservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="re_r_room" Type="int" Nullable="false" />
+          <Property Name="re_checkIn" Type="date" Nullable="false" />
+          <Property Name="re_checkOut" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="se_services">
+          <Key>
+            <PropertyRef Name="se_services" />
+          </Key>
+          <Property Name="se_services" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tr_typeOfRoom">
+          <Key>
+            <PropertyRef Name="tr_type" />
+          </Key>
+          <Property Name="tr_type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="u_user">
+          <Key>
+            <PropertyRef Name="u_username" />
+          </Key>
+          <Property Name="u_username" Type="int" Nullable="false" />
+          <Property Name="u_firstName" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="u_lastName" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="u_password" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_h_hotel_ToDestination">
+          <End Role="d_destination" Type="Self.d_destination" Multiplicity="1" />
+          <End Role="h_hotel" Type="Self.h_hotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="d_destination">
+              <PropertyRef Name="d_city" />
+              <PropertyRef Name="d_country" />
+            </Principal>
+            <Dependent Role="h_hotel">
+              <PropertyRef Name="h_d_city" />
+              <PropertyRef Name="h_d_country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_r_room_ToHotel">
+          <End Role="h_hotel" Type="Self.h_hotel" Multiplicity="1" />
+          <End Role="r_room" Type="Self.r_room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="h_hotel">
+              <PropertyRef Name="h_hotelid" />
+            </Principal>
+            <Dependent Role="r_room">
+              <PropertyRef Name="r_h_hotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_re_reservation_ToRoom">
+          <End Role="r_room" Type="Self.r_room" Multiplicity="1" />
+          <End Role="re_reservation" Type="Self.re_reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="r_room">
+              <PropertyRef Name="r_number" />
+            </Principal>
+            <Dependent Role="re_reservation">
+              <PropertyRef Name="re_r_room" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ebookingModelStoreContainer">
+          <EntitySet Name="d_destination" EntityType="Self.d_destination" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="h_hotel" EntityType="Self.h_hotel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="r_room" EntityType="Self.r_room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ra_rating" EntityType="Self.ra_rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="re_reservation" EntityType="Self.re_reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="se_services" EntityType="Self.se_services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tr_typeOfRoom" EntityType="Self.tr_typeOfRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="u_user" EntityType="Self.u_user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_h_hotel_ToDestination" Association="Self.FK_h_hotel_ToDestination">
+            <End Role="d_destination" EntitySet="d_destination" />
+            <End Role="h_hotel" EntitySet="h_hotel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_r_room_ToHotel" Association="Self.FK_r_room_ToHotel">
+            <End Role="h_hotel" EntitySet="h_hotel" />
+            <End Role="r_room" EntitySet="r_room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_re_reservation_ToRoom" Association="Self.FK_re_reservation_ToRoom">
+            <End Role="r_room" EntitySet="r_room" />
+            <End Role="re_reservation" EntitySet="re_reservation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ebookingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="d_destination">
+          <Key>
+            <PropertyRef Name="d_city" />
+            <PropertyRef Name="d_country" />
+          </Key>
+          <Property Name="d_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="d_country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="h_hotel" Relationship="Self.FK_h_hotel_ToDestination" FromRole="d_destination" ToRole="h_hotel" />
+        </EntityType>
+        <EntityType Name="h_hotel">
+          <Key>
+            <PropertyRef Name="h_hotelid" />
+          </Key>
+          <Property Name="h_hotelid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="h_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="h_stars" Type="Int32" Nullable="false" />
+          <Property Name="h_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="h_zip" Type="Int32" Nullable="false" />
+          <Property Name="h_d_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="h_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="h_d_country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="d_destination" Relationship="Self.FK_h_hotel_ToDestination" FromRole="h_hotel" ToRole="d_destination" />
+          <NavigationProperty Name="r_room" Relationship="Self.FK_r_room_ToHotel" FromRole="h_hotel" ToRole="r_room" />
+        </EntityType>
+        <EntityType Name="r_room">
+          <Key>
+            <PropertyRef Name="r_number" />
+          </Key>
+          <Property Name="r_number" Type="Int32" Nullable="false" />
+          <Property Name="r_h_hotel" Type="Int32" Nullable="false" />
+          <Property Name="r_beds" Type="Int32" />
+          <Property Name="r_price" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="r_description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="h_hotel" Relationship="Self.FK_r_room_ToHotel" FromRole="r_room" ToRole="h_hotel" />
+          <NavigationProperty Name="re_reservation" Relationship="Self.FK_re_reservation_ToRoom" FromRole="r_room" ToRole="re_reservation" />
+        </EntityType>
+        <EntityType Name="ra_rating">
+          <Key>
+            <PropertyRef Name="r_rating" />
+          </Key>
+          <Property Name="r_rating" Type="Int32" Nullable="false" />
+          <Property Name="r_comment" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="re_reservation">
+          <Key>
+            <PropertyRef Name="re_reservationID" />
+          </Key>
+          <Property Name="re_reservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="re_r_room" Type="Int32" Nullable="false" />
+          <Property Name="re_checkIn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="re_checkOut" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="r_room" Relationship="Self.FK_re_reservation_ToRoom" FromRole="re_reservation" ToRole="r_room" />
+        </EntityType>
+        <EntityType Name="se_services">
+          <Key>
+            <PropertyRef Name="se_services1" />
+          </Key>
+          <Property Name="se_services1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tr_typeOfRoom">
+          <Key>
+            <PropertyRef Name="tr_type" />
+          </Key>
+          <Property Name="tr_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="u_user">
+          <Key>
+            <PropertyRef Name="u_username" />
+          </Key>
+          <Property Name="u_username" Type="Int32" Nullable="false" />
+          <Property Name="u_firstName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="u_lastName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="u_password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_h_hotel_ToDestination">
+          <End Role="d_destination" Type="Self.d_destination" Multiplicity="1" />
+          <End Role="h_hotel" Type="Self.h_hotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="d_destination">
+              <PropertyRef Name="d_city" />
+              <PropertyRef Name="d_country" />
+            </Principal>
+            <Dependent Role="h_hotel">
+              <PropertyRef Name="h_d_city" />
+              <PropertyRef Name="h_d_country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_r_room_ToHotel">
+          <End Role="h_hotel" Type="Self.h_hotel" Multiplicity="1" />
+          <End Role="r_room" Type="Self.r_room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="h_hotel">
+              <PropertyRef Name="h_hotelid" />
+            </Principal>
+            <Dependent Role="r_room">
+              <PropertyRef Name="r_h_hotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_re_reservation_ToRoom">
+          <End Role="r_room" Type="Self.r_room" Multiplicity="1" />
+          <End Role="re_reservation" Type="Self.re_reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="r_room">
+              <PropertyRef Name="r_number" />
+            </Principal>
+            <Dependent Role="re_reservation">
+              <PropertyRef Name="re_r_room" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="d_destination" EntityType="Self.d_destination" />
+          <EntitySet Name="h_hotel" EntityType="Self.h_hotel" />
+          <EntitySet Name="r_room" EntityType="Self.r_room" />
+          <EntitySet Name="ra_rating" EntityType="Self.ra_rating" />
+          <EntitySet Name="re_reservation" EntityType="Self.re_reservation" />
+          <EntitySet Name="se_services" EntityType="Self.se_services" />
+          <EntitySet Name="tr_typeOfRoom" EntityType="Self.tr_typeOfRoom" />
+          <EntitySet Name="u_user" EntityType="Self.u_user" />
+          <AssociationSet Name="FK_h_hotel_ToDestination" Association="Self.FK_h_hotel_ToDestination">
+            <End Role="d_destination" EntitySet="d_destination" />
+            <End Role="h_hotel" EntitySet="h_hotel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_r_room_ToHotel" Association="Self.FK_r_room_ToHotel">
+            <End Role="h_hotel" EntitySet="h_hotel" />
+            <End Role="r_room" EntitySet="r_room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_re_reservation_ToRoom" Association="Self.FK_re_reservation_ToRoom">
+            <End Role="r_room" EntitySet="r_room" />
+            <End Role="re_reservation" EntitySet="re_reservation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ebookingModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="d_destination">
+            <EntityTypeMapping TypeName="ebookingModel.d_destination">
+              <MappingFragment StoreEntitySet="d_destination">
+                <ScalarProperty Name="d_city" ColumnName="d_city" />
+                <ScalarProperty Name="d_country" ColumnName="d_country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="h_hotel">
+            <EntityTypeMapping TypeName="ebookingModel.h_hotel">
+              <MappingFragment StoreEntitySet="h_hotel">
+                <ScalarProperty Name="h_hotelid" ColumnName="h_hotelid" />
+                <ScalarProperty Name="h_name" ColumnName="h_name" />
+                <ScalarProperty Name="h_stars" ColumnName="h_stars" />
+                <ScalarProperty Name="h_address" ColumnName="h_address" />
+                <ScalarProperty Name="h_zip" ColumnName="h_zip" />
+                <ScalarProperty Name="h_d_city" ColumnName="h_d_city" />
+                <ScalarProperty Name="h_description" ColumnName="h_description" />
+                <ScalarProperty Name="h_d_country" ColumnName="h_d_country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="r_room">
+            <EntityTypeMapping TypeName="ebookingModel.r_room">
+              <MappingFragment StoreEntitySet="r_room">
+                <ScalarProperty Name="r_number" ColumnName="r_number" />
+                <ScalarProperty Name="r_h_hotel" ColumnName="r_h_hotel" />
+                <ScalarProperty Name="r_beds" ColumnName="r_beds" />
+                <ScalarProperty Name="r_price" ColumnName="r_price" />
+                <ScalarProperty Name="r_description" ColumnName="r_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ra_rating">
+            <EntityTypeMapping TypeName="ebookingModel.ra_rating">
+              <MappingFragment StoreEntitySet="ra_rating">
+                <ScalarProperty Name="r_rating" ColumnName="r_rating" />
+                <ScalarProperty Name="r_comment" ColumnName="r_comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="re_reservation">
+            <EntityTypeMapping TypeName="ebookingModel.re_reservation">
+              <MappingFragment StoreEntitySet="re_reservation">
+                <ScalarProperty Name="re_reservationID" ColumnName="re_reservationID" />
+                <ScalarProperty Name="re_r_room" ColumnName="re_r_room" />
+                <ScalarProperty Name="re_checkIn" ColumnName="re_checkIn" />
+                <ScalarProperty Name="re_checkOut" ColumnName="re_checkOut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="se_services">
+            <EntityTypeMapping TypeName="ebookingModel.se_services">
+              <MappingFragment StoreEntitySet="se_services">
+                <ScalarProperty Name="se_services1" ColumnName="se_services" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tr_typeOfRoom">
+            <EntityTypeMapping TypeName="ebookingModel.tr_typeOfRoom">
+              <MappingFragment StoreEntitySet="tr_typeOfRoom">
+                <ScalarProperty Name="tr_type" ColumnName="tr_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="u_user">
+            <EntityTypeMapping TypeName="ebookingModel.u_user">
+              <MappingFragment StoreEntitySet="u_user">
+                <ScalarProperty Name="u_username" ColumnName="u_username" />
+                <ScalarProperty Name="u_firstName" ColumnName="u_firstName" />
+                <ScalarProperty Name="u_lastName" ColumnName="u_lastName" />
+                <ScalarProperty Name="u_password" ColumnName="u_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

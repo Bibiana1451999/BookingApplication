@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="319" d:DesignWidth="600">
     <Grid x:Name="content">
-        <Image x:Name="image" Source="Logomakr_646VVt.png" Grid.IsSharedSizeScope="True" HorizontalAlignment="Right" Width="128" Height="40" VerticalAlignment="Bottom" Margin="0,0,10,0"/>
+        <Image x:Name="image" Source="Logomakr_646VVt.png" Grid.IsSharedSizeScope="True" HorizontalAlignment="Right" Width="128" Height="40" VerticalAlignment="Bottom" Margin="0,0,10,19"/>
         <DockPanel  LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" HorizontalAlignment="Left"  Width="87" AutomationProperties.IsOffscreenBehavior="Onscreen">
             <Button x:Name="home" Content="Home" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="Top" Foreground="Black" FontWeight="Normal" BorderThickness="0" Click="home_Click" />
         </DockPanel>
@@ -20,14 +20,22 @@
         <Button x:Name="reservation" Content="Reservation" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" RenderTransformOrigin="-0.477,1.452" Margin="0,62,0,0"  FontWeight="Normal" BorderThickness="0" Height="31" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Click="reservation_Click" >
 
         </Button>
-        <TextBox x:Name="textBox" Height="26" Margin="86,31,0,0" TextWrapping="Wrap" FontWeight="Light" Text="Search" VerticalAlignment="Top" HorizontalAlignment="Left" Width="445"/>
-        <Button x:Name="button" Content="Search"  Margin="525,31,0,0" VerticalAlignment="Top" Height="26" RenderTransformOrigin="0.5,0.361"/>
-        <Label x:Name="label" Content="Name" HorizontalAlignment="Left" Margin="114,99,0,0" VerticalAlignment="Top" Height="25" Width="42"/>
-        <Label x:Name="label1" Content="Address" HorizontalAlignment="Left" Margin="350,98,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="161,103,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="21" Width="90"/>
-        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="408,99,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="21" Width="90"/>
-        <Label x:Name="label2" Content="Description" HorizontalAlignment="Left" Margin="114,170,0,0" VerticalAlignment="Top" Height="27" Width="89"/>
+        <TextBox x:Name="searchBox" Height="26" Margin="86,31,0,0" TextWrapping="Wrap" FontWeight="Light" Text="Search" VerticalAlignment="Top" HorizontalAlignment="Left" Width="445"/>
+        <Button x:Name="searchBTN" Click="searchBTN_Click" Content="Search"  Margin="525,31,0,0" VerticalAlignment="Top" Height="26" RenderTransformOrigin="0.5,0.361"/>
+        <Label x:Name="label" Content="Name:" HorizontalAlignment="Left" Margin="114,103,0,0" VerticalAlignment="Top" Height="30" Width="42"/>
+        <Label x:Name="label1" Content="Address:" HorizontalAlignment="Left" Margin="350,103,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.491,1" Height="30"/>
+        <Label x:Name="textBlockName" HorizontalAlignment="Left" Margin="161,103,0,0" VerticalAlignment="Top" Height="30" Width="150"/>
+        <Label x:Name="textBlockAddress" HorizontalAlignment="Left" Margin="408,103,0,0"   VerticalAlignment="Top" Height="30" Width="170"/>
+        <Label x:Name="label2" Content="Description:" HorizontalAlignment="Left" Margin="114,199,0,0" VerticalAlignment="Top" Height="27" Width="89"/>
         <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" VerticalAlignment="Bottom" Height="27" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Click="addHotel_Click" />
-        <TextBlock x:Name="textBlock1" TextWrapping="Wrap"  RenderTransformOrigin="2.122,2.312" Margin="114,197,164,39"/>
+        <TextBlock x:Name="textBlockDescr" TextWrapping="Wrap"  RenderTransformOrigin="2.122,2.312" Margin="123,226,22,10"/>
+        <Label x:Name="label4" Content="City:" HorizontalAlignment="Left" Margin="114,138,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.263,-0.308" Width="42"/>
+        <Label x:Name="label5" Content="Country: " HorizontalAlignment="Left" Margin="350,138,0,0" VerticalAlignment="Top" Width="55"/>
+        <Label x:Name="TextCity" HorizontalAlignment="Left" Margin="161,138,0,0" VerticalAlignment="Top" Width="150" Height="26"/>
+        <Label x:Name="TextCountry" HorizontalAlignment="Left" Margin="408,138,0,0"   VerticalAlignment="Top" Height="26" Width="170"/>
+        <Label x:Name="label4_Copy" Content="Stars:" HorizontalAlignment="Left" Margin="114,169,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.263,-0.308" Width="42"/>
+        <Label x:Name="TextStars" HorizontalAlignment="Left" Margin="161,169,0,0" VerticalAlignment="Top" Width="150" Height="26" RenderTransformOrigin="0.527,1.923"/>
+        <Label x:Name="label5_Copy" Content="ZIP: " HorizontalAlignment="Left" Margin="350,169,0,0" VerticalAlignment="Top" Width="55"/>
+        <Label x:Name="TextZIP" HorizontalAlignment="Left" Margin="405,169,0,0"   VerticalAlignment="Top" Height="26" Width="170"/>
     </Grid>
 </UserControl>
