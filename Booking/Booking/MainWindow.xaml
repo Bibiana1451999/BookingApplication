@@ -1,0 +1,28 @@
+﻿<Window x:Class="Booking.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:Booking"
+        mc:Ignorable="d"
+        Title="BookingApp" Height="400" Width="600" Grid.IsSharedSizeScope="True">
+  
+        <Grid x:Name="content">
+            <Image x:Name="image" HorizontalAlignment="Center"  Height="106" Margin="138,88,80,0" VerticalAlignment="Top" Width="299" Source="Logomakr_646VVt.png" Grid.IsSharedSizeScope="True"/>
+            <DockPanel  LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" HorizontalAlignment="Left"  Width="87" AutomationProperties.IsOffscreenBehavior="Onscreen">
+                <Button x:Name="home" Content="Home" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="Top" Foreground="Black" FontWeight="Normal" BorderThickness="0" Click="home_Click" />
+            </DockPanel>
+            <DockPanel Height="31" FlowDirection="LeftToRight" LastChildFill="False"  VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" Margin="87,0,0,0">
+            <Label x:Name="label" Content="HOME" Height="31" VerticalAlignment="Top" Width="78"/>
+        </DockPanel>
+        <Button x:Name="Search" Content="Search" HorizontalAlignment="Left" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="top" RenderTransformOrigin="-0.477,1.452" Margin="0,31,431,0"  FontWeight="Normal" BorderThickness="0" Click="search_Click">
+
+            </Button>
+        <Button x:Name="reservation" Content="Reservation" HorizontalAlignment="Left" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="top" RenderTransformOrigin="-0.477,1.452" Margin="0,62,0,0"  Click="reservation_Click"  FontWeight="Normal" BorderThickness="0"  >
+
+        </Button>
+        <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" VerticalAlignment="Bottom" Height="27" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Click="addHotel_Click" />
+    </Grid>
+    
+</Window>
