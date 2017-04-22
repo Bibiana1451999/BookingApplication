@@ -19,6 +19,8 @@
         <Button x:Name="reservation" Content="Reservation" HorizontalAlignment="Left" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="top" RenderTransformOrigin="-0.477,1.452" Margin="0,62,0,0"  Click="reservation_Click"  FontWeight="Normal" BorderThickness="0"  >
 
         </Button>
+       
         <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" VerticalAlignment="Bottom" Height="27" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Click="addHotel_Click" />
+
     </Grid>
 </UserControl>

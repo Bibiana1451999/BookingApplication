@@ -72,8 +72,10 @@ namespace Booking
 
         }
 
+        private void BoxCity_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
-
+        }
     }
 
 }

@@ -20,7 +20,7 @@
         <Button x:Name="reservation" Content="Reservation" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" RenderTransformOrigin="-0.477,1.452" Margin="0,62,0,0"  FontWeight="Normal" BorderThickness="0" Height="31" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Click="reservation_Click" >
 
         </Button>
-        <ComboBox x:Name="BoxCity" Height="26" Margin="86,31,0,0"  FontWeight="Light" Text="Search" VerticalAlignment="Top" HorizontalAlignment="Left" Width="445" IsEditable="True"/>
+        <ComboBox x:Name="BoxCity" Height="26" Margin="86,31,0,0"  FontWeight="Light" Text="Search" VerticalAlignment="Top" HorizontalAlignment="Left" Width="445" IsEditable="True" SelectionChanged="BoxCity_SelectionChanged"/>
         <Button x:Name="button" Content="Search"  Margin="525,31,0,0" VerticalAlignment="Top" Height="26" RenderTransformOrigin="0.5,0.361"/>
         <Label x:Name="label" Content="Name" HorizontalAlignment="Left" Margin="114,99,0,0" VerticalAlignment="Top" Height="25" Width="42"/>
         <Label x:Name="label1" Content="Address" HorizontalAlignment="Left" Margin="350,98,0,0" VerticalAlignment="Top"/>

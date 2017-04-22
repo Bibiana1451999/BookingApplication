@@ -72,5 +72,14 @@ namespace Booking
 
         }
 
+        private void login_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void login_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
