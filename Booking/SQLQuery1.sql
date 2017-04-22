@@ -1,0 +1,55 @@
+﻿
+insert into d_destination 
+( d_city, d_country)
+values
+('Bratislava', 'Slovakia');
+insert into d_destination (d_city, d_country) values ('Nartkala', 'Russia');
+insert into d_destination (d_city, d_country) values ('Overyata', 'Russia');
+insert into d_destination (d_city, d_country) values ('Strelka', 'Russia');
+insert into d_destination (d_city, d_country) values ('Baltimore', 'United States');
+insert into d_destination (d_city, d_country) values ('Jeffersonville', 'United States');
+insert into d_destination (d_city, d_country) values ('Bukovany', 'Czech Republic');
+insert into d_destination (d_city, d_country) values ('Washington', 'United States');
+insert into d_destination (d_city, d_country) values ('Tucson', 'United States');
+insert into d_destination (d_city, d_country) values ('Stęszew', 'Poland');
+insert into d_destination (d_city, d_country) values ('Bakersfield', 'United States');
+insert into d_destination (d_city, d_country) values ('Višnjićevo', 'Serbia');
+insert into d_destination (d_city, d_country) values ('Kumberg', 'Austria');
+insert into d_destination (d_city, d_country) values ('Kirovsk', 'Russia');
+insert into d_destination (d_city, d_country) values ('La Roche-sur-Yon', 'France');
+insert into d_destination (d_city, d_country) values ('Krivyanskaya', 'Russia');
+insert into d_destination (d_city, d_country) values ('Biała Piska', 'Poland');
+insert into d_destination (d_city, d_country) values ('Żyraków', 'Poland');
+insert into d_destination (d_city, d_country) values ('Verkhniy Avzyan', 'Russia');
+insert into d_destination (d_city, d_country) values ('Vysotsk', 'Russia');
+insert into d_destination (d_city, d_country) values ('Mirsk', 'Poland');
+insert into d_destination (d_city, d_country) values ('Vojkovice', 'Czech Republic');
+insert into d_destination (d_city, d_country) values ('El Paso', 'United States');
+insert into d_destination (d_city, d_country) values ('Mollas', 'Albania');
+insert into d_destination (d_city, d_country) values ('Ishëm', 'Albania');
+insert into d_destination (d_city, d_country) values ('Rochester', 'United States');
+insert into d_destination (d_city, d_country) values ('Krasnaya Gorka', 'Russia');
+insert into d_destination (d_city, d_country) values ('Szklarska Poręba', 'Poland');
+insert into d_destination (d_city, d_country) values ('Uście Gorlickie', 'Poland');
+insert into d_destination (d_city, d_country) values ('Sremski Karlovci', 'Serbia');
+insert into d_destination (d_city, d_country) values ('Torino', 'Italy');
+insert into d_destination (d_city, d_country) values ('Créteil', 'France');
+insert into d_destination (d_city, d_country) values ('Łęki', 'Poland');
+insert into d_destination (d_city, d_country) values ('Rouen', 'France');
+insert into d_destination (d_city, d_country) values ('Uptar', 'Russia');
+insert into d_destination (d_city, d_country) values ('Bagan', 'Russia');
+insert into d_destination (d_city, d_country) values ('Krutinka', 'Russia');
+insert into d_destination (d_city, d_country) values ('Bronx', 'United States');
+insert into d_destination (d_city, d_country) values ('Przecław', 'Poland');
+insert into d_destination (d_city, d_country) values ('Sieradza', 'Poland');
+insert into d_destination (d_city, d_country) values ('Gornji Breg', 'Serbia');
+insert into d_destination (d_city, d_country) values ('Yam', 'Russia');
+insert into d_destination (d_city, d_country) values ('Marseille', 'France');
+insert into d_destination (d_city, d_country) values ('Glubokiy', 'Russia');
+insert into d_destination (d_city, d_country) values ('Fryčovice', 'Czech Republic');
+insert into d_destination (d_city, d_country) values ('Sandvika', 'Norway');
+insert into d_destination (d_city, d_country) values ('Lukićevo', 'Serbia');
+insert into d_destination (d_city, d_country) values ('Karaidel’', 'Russia');
+insert into d_destination (d_city, d_country) values ('Głogów Małopolski', 'Poland');
+insert into d_destination (d_city, d_country) values ('Vykhino-Zhulebino', 'Russia');
+insert into d_destination (d_city, d_country) values ('El Paso', 'United States');
