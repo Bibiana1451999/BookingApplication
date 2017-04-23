@@ -35,7 +35,7 @@
         <TextBox x:Name="textBox1" Height="21" Margin="400,188,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="textBox1_Copy" Height="21" Margin="400,218,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="textBox1_Copy1" Height="20" Margin="400,251,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox1_Copy2" Height="20" Margin="400,278,10,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox1_Copy2" Height="20" Margin="400,278,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
     </Grid>
 
 </Window>
