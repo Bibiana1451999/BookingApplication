@@ -7,18 +7,20 @@
              mc:Ignorable="d" 
               Height="Auto"  Width="Auto" >
 
-    <Grid x:Name="content" >
-        <Image x:Name="image" Margin="0,88,-64,206" Source="Logomakr_646VVt.png" Grid.IsSharedSizeScope="True"  Width="450"/>
-        <DockPanel  LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" AutomationProperties.IsOffscreenBehavior="Onscreen" HorizontalAlignment="Left" Width="87">
+    <Grid x:Name="content" Height="400">
+        <Image x:Name="image" HorizontalAlignment="Center"  Height="106" Margin="138,88,80,0" VerticalAlignment="Top" Width="299" Source="Logomakr_646VVt.png" Grid.IsSharedSizeScope="True"/>
+        <DockPanel  LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" HorizontalAlignment="Left"  Width="87" AutomationProperties.IsOffscreenBehavior="Onscreen">
             <Button x:Name="home" Content="Home" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="Top" Foreground="Black" FontWeight="Normal" BorderThickness="0" Click="home_Click" />
         </DockPanel>
-        <DockPanel FlowDirection="LeftToRight" LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" Margin="87,0,0,0" Height="23" VerticalAlignment="Top"/>
-        <Button x:Name="Search" Content="Search" HorizontalAlignment="Left" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" RenderTransformOrigin="-0.477,1.452" Margin="0,31,0,0"  FontWeight="Normal" BorderThickness="0" Click="search_Click" Height="31" VerticalAlignment="Top"/>
+        <DockPanel Height="31" FlowDirection="LeftToRight" LastChildFill="False"  VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" Margin="87,0,0,0"/>
+        <Button x:Name="Search" Content="Search" HorizontalAlignment="Left" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="top" RenderTransformOrigin="-0.477,1.452" Margin="0,31,431,0"  FontWeight="Normal" BorderThickness="0" Click="search_Click">
+
+        </Button>
         <Button x:Name="reservation" Content="Reservation" HorizontalAlignment="Left" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="top" RenderTransformOrigin="-0.477,1.452" Margin="0,62,0,0"  Click="reservation_Click"  FontWeight="Normal" BorderThickness="0"  >
 
         </Button>
 
-        <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" Click="addHotel_Click" Margin="0,0,0,10" HorizontalAlignment="Left" Width="87" Height="32" VerticalAlignment="Bottom" />
+        <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" VerticalAlignment="Bottom" Height="27" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Click="addHotel_Click" />
 
     </Grid>
 </UserControl>
