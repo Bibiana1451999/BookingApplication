@@ -92,38 +92,59 @@ namespace Booking
             string destination = comboBoxCities.SelectedItem.ToString();
             string[] arr = destination.Split(',');
 
-            h_hotel hotel = new h_hotel();
+            List<h_hotel> lihotels = new List<h_hotel>();
             List<r_room> lirooms = new List<r_room>();
 
-            foreach(h_hotel element in db.h_hotel)
+            foreach (h_hotel element in db.h_hotel)
             {
-                if(element.h_d_city == arr[0] && element.h_d_country == arr[1])
+                if (element.h_d_city == arr[0] && element.h_d_country == arr[1])
                 {
-                    foreach(r_room room in db.r_room)
+                    foreach (r_room room in db.r_room)
                     {
-                        if(room.r_h_hotel == element.h_hotelid)
+                        if (room.r_beds == int.Parse(comboBoxBeds.SelectedItem.ToString()))
                         {
-                            foreach(re_reservation reservation in db.re_reservation)
+                            if (room.r_h_hotel == element.h_hotelid)
                             {
-                                if(reservation.re_r_room == room.r_number)
+                                foreach (re_reservation reservation in db.re_reservation)
                                 {
-                                    if(Convert.ToDateTime(checkInDP) > reservation.re_checkOut || Convert.ToDateTime(checkOutDP) < reservation.re_checkIn)
+                                    if (reservation.re_r_room == room.r_number)
                                     {
-                                        lirooms.Add(room);
+                                        if (checkInDP.SelectedDate.Value > reservation.re_checkOut || checkOutDP.SelectedDate.Value < reservation.re_checkIn)
+                                        {
+                                            lirooms.Add(room);
+                                            lihotels.Add(element);
+                                        }
                                     }
                                 }
-                            }
-                            if (lirooms.Count() == 0)
-                            {
-                                lirooms.Add(room);
+                                if (lirooms.Count() == 0)
+                                {
+                                    lirooms.Add(room);
+                                    lihotels.Add(element);
+                                }
                             }
                         }
                     }
                 }
+
+
+                listBoxHotels.ItemsSource = lihotels;
+                listBoxRooms.ItemsSource = lirooms;
             }
 
-            listBox.ItemsSource = lirooms;
+        }
 
+        private void ReserveBTN_Click(object sender, RoutedEventArgs e)
+        {
+            r_room room = (r_room)listBoxRooms.SelectedItem;
+            re_reservation reserv = new re_reservation();
+
+            reserv.re_r_room = room.r_number;
+            reserv.re_checkIn = checkInDP.SelectedDate.Value;
+            reserv.re_checkOut = checkOutDP.SelectedDate.Value;
+
+            db.re_reservation.Add(reserv);
+            db.SaveChanges();
+            textBlock.Text = "Room reserved!";
         }
     }
 }
