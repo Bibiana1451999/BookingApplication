@@ -85,5 +85,8 @@ insert into tr_typeOfRoom (tr_type) values ('Double Room');
 insert into tr_typeOfRoom (tr_type) values ('Double Double Room');
 insert into tr_typeOfRoom (tr_type) values ('Twin Room');
 
+delete from h_hotel
+where h_hotelid = 155;
+
 insert into re_reservation( re_r_room, re_checkIn, re_checkOut) values (8, '2017-08-19','2017-08-21');
 insert into re_reservation( re_r_room, re_checkIn, re_checkOut) values (01, '2017-06-12','2017-06-13');
