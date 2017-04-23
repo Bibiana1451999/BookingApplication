@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Booking"
              mc:Ignorable="d" 
-            Height="Auto" Width="Auto">
+            Height="Auto" Width="Auto" Loaded="UserControl_Loaded">
     <Grid x:Name="content"     >
         <Image x:Name="image" Source="Logomakr_646VVt.png" Grid.IsSharedSizeScope="True" HorizontalAlignment="Right" Width="128" Height="40" VerticalAlignment="Bottom"/>
         <DockPanel  LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" HorizontalAlignment="Left"  Width="87" AutomationProperties.IsOffscreenBehavior="Onscreen">
@@ -26,14 +26,14 @@
         <Label x:Name="label4" Content="Zip" HorizontalAlignment="Left" Margin="91,80,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label5" Content="City" HorizontalAlignment="Left" Margin="238,80,0,0" RenderTransformOrigin="4.889,-0.058" Height="26" VerticalAlignment="Top"/>
         <Label x:Name="label6" Content="Country" HorizontalAlignment="Left" Margin="400,80,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBox" Margin="457,80,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="118"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="457,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" TextChanged="textBox_TextChanged"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="290,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="149,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74"/>
-        <ComboBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="290,80,0,0"  VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.459,0.652"/>
-        <TextBox x:Name="textBox4" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Margin="149,79,0,0"/>
-        <TextBox x:Name="textBox6" Margin="92,151,10,0" TextWrapping="Wrap" Height="104" VerticalAlignment="Top"/>
-        <Button x:Name="button" Content="Add Hotel" HorizontalAlignment="Left" Margin="92,273,0,0" VerticalAlignment="Top" Width="89" RenderTransformOrigin="0.013,0.25"/>
+        <ComboBox x:Name="comboBoxCountries" SelectedValue="{Binding Path=d_country}" ItemsSource="{Binding ElementName=comboBoxCities, Path=SelectedItem}" SelectedValuePath="d_city" DisplayMemberPath="d_country" Margin="457,80,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="118"/>
+        <TextBox x:Name="textBoxAddress" HorizontalAlignment="Left" Height="23" Margin="457,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118"/>
+        <TextBox x:Name="textBoxStars" HorizontalAlignment="Left" Height="23" Margin="290,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="23" Margin="149,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74"/>
+        <ComboBox x:Name="comboBoxCities" HorizontalAlignment="Left" Height="23" Margin="290,80,0,0"  VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.459,0.652"/>
+        <TextBox x:Name="textBoxZip" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Margin="149,79,0,0"/>
+        <TextBox x:Name="textBoxDescr" Margin="92,151,10,0" TextWrapping="Wrap" Height="104" VerticalAlignment="Top"/>
+        <Button x:Name="AddHotelBN" Click="AddHotelBN_Click" Content="Add Hotel" HorizontalAlignment="Left" Margin="92,273,0,0" VerticalAlignment="Top" Width="89" RenderTransformOrigin="0.013,0.25"/>
         <Label x:Name="label8" Content="ADD NEW HOTEL" HorizontalAlignment="Left" Margin="87,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.921,0.192"/>
     </Grid>
 </UserControl>

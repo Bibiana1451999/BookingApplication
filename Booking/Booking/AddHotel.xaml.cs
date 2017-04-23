@@ -20,6 +20,7 @@ namespace Booking
     /// </summary>
     public partial class AddHotel : UserControl
     {
+        Entities db = new Entities();
         public AddHotel()
         {
             InitializeComponent();
@@ -76,8 +77,28 @@ namespace Booking
             content.Children.Add(nc);
         }
 
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            List<d_destination> lidest = db.d_destination.ToList();
+            foreach (d_destination element in lidest)
+              comboBoxCities.Items.Add(element.d_city);
+            
+
+           
+        }
+
+        private void AddHotelBN_Click(object sender, RoutedEventArgs e)
+        {
+            h_hotel hotel = new h_hotel();
+
+            hotel.h_name = textBoxName.Text;
+            hotel.h_stars =Convert.ToInt16(textBoxStars.Text);
+            hotel.h_address = textBoxAddress.Text;
+            hotel.h_description = textBoxDescr.Text;
+            hotel.h_zip =Convert.ToInt16(textBoxZip.Text);
+            hotel.h_d_city = comboBoxCities.SelectedValue.ToString();
+            hotel.h_d_country = comboBoxCountries.SelectedValue.ToString();
 
         }
     }

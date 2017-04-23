@@ -20,6 +20,7 @@ namespace Booking
     /// </summary>
     public partial class Reservation : UserControl
     {
+        Entities db = new Entities();
         public Reservation()
         {
             InitializeComponent();
@@ -71,6 +72,19 @@ namespace Booking
 
             content.Children.Add(nc);
 
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<d_destination> lidest = db.d_destination.ToList();
+            foreach (d_destination element in lidest)
+                comboBoxCities.Items.Add(element.d_city);
+
+            for(int i=1; i < 7; i++)
+            {
+                comboBoxPersons.Items.Add(i);
+                comboBoxRooms.Items.Add(i);
+            }
         }
     }
 }
