@@ -18,6 +18,7 @@ namespace Booking
         public h_hotel()
         {
             this.r_room = new HashSet<r_room>();
+            this.se_services = new HashSet<se_services>();
         }
     
         public int h_hotelid { get; set; }
@@ -28,9 +29,13 @@ namespace Booking
         public string h_d_city { get; set; }
         public string h_description { get; set; }
         public string h_d_country { get; set; }
+        public string h_ho_host { get; set; }
     
         public virtual d_destination d_destination { get; set; }
+        public virtual ho_host ho_host { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<r_room> r_room { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<se_services> se_services { get; set; }
     }
 }

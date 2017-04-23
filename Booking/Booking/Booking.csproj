@@ -85,6 +85,9 @@
     <Compile Include="Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ho_host.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="h_hotel.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -15,5 +15,8 @@ namespace Booking
     public partial class se_services
     {
         public string se_services1 { get; set; }
+        public Nullable<int> se_h_hotelid { get; set; }
+    
+        public virtual h_hotel h_hotel { get; set; }
     }
 }

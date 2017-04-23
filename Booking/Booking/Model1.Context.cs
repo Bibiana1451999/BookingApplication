@@ -27,6 +27,7 @@ namespace Booking
     
         public virtual DbSet<d_destination> d_destination { get; set; }
         public virtual DbSet<h_hotel> h_hotel { get; set; }
+        public virtual DbSet<ho_host> ho_host { get; set; }
         public virtual DbSet<r_room> r_room { get; set; }
         public virtual DbSet<ra_rating> ra_rating { get; set; }
         public virtual DbSet<re_reservation> re_reservation { get; set; }

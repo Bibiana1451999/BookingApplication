@@ -82,7 +82,7 @@ namespace Booking
         {
             List<d_destination> lidest = db.d_destination.ToList();
             foreach (d_destination element in lidest)
-              comboBoxCities.Items.Add(element.d_city);
+              comboBoxCities.Items.Add(element.d_city +","+ element.d_country);
             
 
            
@@ -92,14 +92,26 @@ namespace Booking
         {
             h_hotel hotel = new h_hotel();
 
+            string destination = comboBoxCities.SelectedItem.ToString();
+            string[] arr = destination.Split(',');
+
             hotel.h_name = textBoxName.Text;
             hotel.h_stars =Convert.ToInt16(textBoxStars.Text);
             hotel.h_address = textBoxAddress.Text;
             hotel.h_description = textBoxDescr.Text;
             hotel.h_zip =Convert.ToInt16(textBoxZip.Text);
-            hotel.h_d_city = comboBoxCities.SelectedValue.ToString();
-            hotel.h_d_country = comboBoxCountries.SelectedValue.ToString();
+            hotel.h_d_city = arr[0];
+            hotel.h_d_country = arr[1];
 
+            if (db.h_hotel.Contains(hotel))
+            {
+                errorBlock.Text = "This Hotel already exists, please add another one!";
+            }
+            else
+            {
+                db.h_hotel.Add(hotel);
+                db.SaveChanges();
+            }
         }
     }
 }

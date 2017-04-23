@@ -12,20 +12,20 @@ namespace Booking
     using System;
     using System.Collections.Generic;
     
-    public partial class u_user
+    public partial class ho_host
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public u_user()
+        public ho_host()
         {
-            this.ra_rating = new HashSet<ra_rating>();
+            this.h_hotel = new HashSet<h_hotel>();
         }
     
-        public string u_username { get; set; }
-        public string u_firstName { get; set; }
-        public string u_lastName { get; set; }
-        public string u_password { get; set; }
+        public string ho_hostname { get; set; }
+        public string ho_fistname { get; set; }
+        public string ho_lastname { get; set; }
+        public string ho_password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ra_rating> ra_rating { get; set; }
+        public virtual ICollection<h_hotel> h_hotel { get; set; }
     }
 }
