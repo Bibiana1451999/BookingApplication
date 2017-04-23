@@ -78,13 +78,52 @@ namespace Booking
         {
             List<d_destination> lidest = db.d_destination.ToList();
             foreach (d_destination element in lidest)
-                comboBoxCities.Items.Add(element.d_city);
+                comboBoxCities.Items.Add(element.d_city+","+element.d_country);
 
             for(int i=1; i < 7; i++)
             {
-                comboBoxPersons.Items.Add(i);
+                comboBoxBeds.Items.Add(i);
                 comboBoxRooms.Items.Add(i);
             }
+        }
+
+        private void SearchBTN_Click(object sender, RoutedEventArgs e)
+        {
+            string destination = comboBoxCities.SelectedItem.ToString();
+            string[] arr = destination.Split(',');
+
+            h_hotel hotel = new h_hotel();
+            List<r_room> lirooms = new List<r_room>();
+
+            foreach(h_hotel element in db.h_hotel)
+            {
+                if(element.h_d_city == arr[0] && element.h_d_country == arr[1])
+                {
+                    foreach(r_room room in db.r_room)
+                    {
+                        if(room.r_h_hotel == element.h_hotelid)
+                        {
+                            foreach(re_reservation reservation in db.re_reservation)
+                            {
+                                if(reservation.re_r_room == room.r_number)
+                                {
+                                    if(Convert.ToDateTime(checkInDP) > reservation.re_checkOut || Convert.ToDateTime(checkOutDP) < reservation.re_checkIn)
+                                    {
+                                        lirooms.Add(room);
+                                    }
+                                }
+                            }
+                            if (lirooms.Count() == 0)
+                            {
+                                lirooms.Add(room);
+                            }
+                        }
+                    }
+                }
+            }
+
+            listBox.ItemsSource = lirooms;
+
         }
     }
 }
