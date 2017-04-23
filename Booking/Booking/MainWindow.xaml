@@ -11,10 +11,10 @@
     <Grid x:Name="content" Height="400">
         <Image x:Name="image" HorizontalAlignment="Center"  Height="122" Margin="141,44,77,0" VerticalAlignment="Top" Width="299" Source="Logomakr_646VVt.png" Grid.IsSharedSizeScope="True"/>
         <Label x:Name="label" Content="Username:" HorizontalAlignment="Left" Margin="110,188,0,0" VerticalAlignment="Top" Width="71" Height="24" RenderTransformOrigin="0.253,0.615"/>
-        <TextBox x:Name="logInUsername" HorizontalAlignment="Left" Height="24" Margin="186,188,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="24" Margin="186,188,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="100"/>
         <Label x:Name="label_Copy" Content="Password:" HorizontalAlignment="Left" Margin="110,218,0,0" VerticalAlignment="Top" Width="71" Height="24" RenderTransformOrigin="0.253,0.615"/>
-        <TextBox x:Name="logInPassword" HorizontalAlignment="Left" Height="24" Margin="186,218,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100"/>
-        <Button x:Name="LogInBTN" Click="LogInBTN_Click" Content="Log in" HorizontalAlignment="Left" Margin="201,251,0,0" VerticalAlignment="Top" Width="83"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="24" Margin="186,218,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="button" Content="Log in" HorizontalAlignment="Left" Margin="201,251,0,0" VerticalAlignment="Top" Width="83"/>
 
         <DockPanel  LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" HorizontalAlignment="Left"  Width="87" AutomationProperties.IsOffscreenBehavior="Onscreen">
             <Button x:Name="home" Content="Home" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="Top" Foreground="Black" FontWeight="Normal" BorderThickness="0" Click="home_Click" />
@@ -23,20 +23,19 @@
         <Button x:Name="Search" Content="Search" HorizontalAlignment="Left" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="top" RenderTransformOrigin="-0.477,1.452" Margin="0,31,431,0"  FontWeight="Normal" BorderThickness="0" Click="search_Click"/>
         <Button x:Name="reservation" Content="Reservation" HorizontalAlignment="Left" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="top" RenderTransformOrigin="-0.477,1.452" Margin="0,62,0,0"  Click="reservation_Click"  FontWeight="Normal" BorderThickness="0"  />
         <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" VerticalAlignment="Bottom" Height="27" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Click="addHotel_Click" />
-        <CheckBox x:Name="checkBoxLogin" Content="I am a Host" HorizontalAlignment="Left" Margin="110,251,0,0" VerticalAlignment="Top" Width="86" Height="20"/>
+        <CheckBox x:Name="checkBox" Content="I am a Host" HorizontalAlignment="Left" Margin="110,251,0,0" VerticalAlignment="Top" Width="86" Height="20"/>
         <Label x:Name="label1" Content="Sign in" FontWeight="Bold" HorizontalContentAlignment="Center" Margin="92,157,280,0" VerticalAlignment="Top"/>
         <Label x:Name="label2" Content="Sign up" FontWeight="Bold" HorizontalContentAlignment="Center" Margin="324,157,0,0" VerticalAlignment="Top" Width="166"/>
         <Label x:Name="label3" Content="Firstname:" HorizontalAlignment="Left" Margin="324,185,0,0" VerticalAlignment="Top" Width="71" Height="24"/>
         <Label x:Name="label3_Copy" Content="Lastname:" HorizontalAlignment="Left" Margin="324,215,0,0" VerticalAlignment="Top" Width="71" Height="24"/>
         <Label x:Name="label3_Copy1" Content="Username:" HorizontalAlignment="Left" Margin="324,245,0,0" VerticalAlignment="Top" Width="71" Height="24"/>
         <Label x:Name="label3_Copy2" Content="Password:" HorizontalAlignment="Left" Margin="324,274,0,0" VerticalAlignment="Top" Width="71" Height="24"/>
-        <Button x:Name="SignUpBTN" Click="SignUpBTN_Click" Content="Sign up" HorizontalAlignment="Left" Margin="375,328,0,0" VerticalAlignment="Top" Width="75"/>
-        <CheckBox x:Name="checkBoxSignup" Content="I want to be a Host" HorizontalAlignment="Left" Margin="324,303,0,0" VerticalAlignment="Top" Width="166" Height="20"/>
-        <TextBox x:Name="textFirstname" Height="21" Margin="400,188,5,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:Name="textLastname" Height="21" Margin="400,218,5,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
-        <TextBox x:Name="textUsername" Height="20" Margin="400,251,5,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
-        <TextBox x:Name="textPassword" Height="20" Margin="400,278,5,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
-        <TextBlock x:Name="blockError" IsEnabled="False" HorizontalAlignment="Left" Margin="110,278,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="89" Width="174"/>
+        <Button x:Name="button1" Content="Sign up" HorizontalAlignment="Left" Margin="375,328,0,0" VerticalAlignment="Top" Width="75"/>
+        <CheckBox x:Name="checkBox_Copy" Content="I want to be a Host" HorizontalAlignment="Left" Margin="324,303,0,0" VerticalAlignment="Top" Width="166" Height="20"/>
+        <TextBox x:Name="textBox1" Height="21" Margin="400,188,5,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox1_Copy" Height="21" Margin="400,218,5,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox1_Copy1" Height="20" Margin="400,251,5,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox1_Copy2" Height="20" Margin="400,278,5,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
     </Grid>
-
+    
 </Window>
