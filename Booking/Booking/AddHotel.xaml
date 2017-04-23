@@ -19,7 +19,7 @@
 
         </Button>
         <Label x:Name="label2" Content="Description" HorizontalAlignment="Left" Margin="92,130,0,-12" Width="89"/>
-        <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" VerticalAlignment="Bottom" Height="27" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Click="addHotel_Click" />
+        <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" VerticalAlignment="Bottom" Height="27" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Click="addHotel_Click" Margin="0,0,0,10" />
         <Label x:Name="label" Content="Name" HorizontalAlignment="Left" Margin="92,39,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Address" HorizontalAlignment="Left" Margin="322,39,0,0" VerticalAlignment="Top" Height="26" RenderTransformOrigin="-0.355,-0.645" Width="61"/>
         <Label x:Name="label3" Content="Stars" HorizontalAlignment="Left" Margin="230,80,0,0" VerticalAlignment="Top"/>
