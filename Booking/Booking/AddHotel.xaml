@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
             Height="Auto" Width="Auto" Loaded="UserControl_Loaded">
     <Grid x:Name="content"     >
-        <Image x:Name="image" Source="Logomakr_646VVt.png" Grid.IsSharedSizeScope="True" HorizontalAlignment="Right" Width="128" Height="40" VerticalAlignment="Bottom"/>
+        <Image x:Name="image" Source="Logomakr_646VVt.png" Grid.IsSharedSizeScope="True" HorizontalAlignment="Right" Width="128" Height="40" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
         <DockPanel  LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" HorizontalAlignment="Left"  Width="87" AutomationProperties.IsOffscreenBehavior="Onscreen">
             <Button x:Name="home" Content="Home" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="Top" Foreground="Black" FontWeight="Normal" BorderThickness="0" Click="home_Click" />
         </DockPanel>
@@ -19,7 +19,7 @@
 
         </Button>
         <Label x:Name="label2" Content="Description" HorizontalAlignment="Left" Margin="92,130,0,-12" Width="89"/>
-        <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" VerticalAlignment="Bottom" Height="27" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Click="addHotel_Click" />
+        <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" VerticalAlignment="Bottom" Height="27" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Click="addHotel_Click" Margin="0,0,0,10" />
         <Label x:Name="label" Content="Name" HorizontalAlignment="Left" Margin="92,39,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Address" HorizontalAlignment="Left" Margin="400,32,0,0" VerticalAlignment="Top" Height="31" RenderTransformOrigin="-0.355,-0.645" Width="88"/>
         <Label x:Name="label3" Content="Stars" HorizontalAlignment="Left" Margin="238,31,0,0" VerticalAlignment="Top"/>
