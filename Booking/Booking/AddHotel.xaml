@@ -7,19 +7,19 @@
              mc:Ignorable="d" 
             Height="Auto" Width="Auto">
     <Grid x:Name="content"     >
-        <Image x:Name="image" Source="Logomakr_646VVt.png" Grid.IsSharedSizeScope="True" HorizontalAlignment="Right" Width="128" Height="40" VerticalAlignment="Bottom"/>
-        <DockPanel  LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" HorizontalAlignment="Left"  Width="87" AutomationProperties.IsOffscreenBehavior="Onscreen">
+        <Image x:Name="image" Source="Logomakr_646VVt.png" Grid.IsSharedSizeScope="True" HorizontalAlignment="Right" Width="130" Margin="0,0,0,11" Height="42" VerticalAlignment="Bottom"/>
+        <DockPanel  LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" HorizontalAlignment="Left"  Width="87" AutomationProperties.IsOffscreenBehavior="Onscreen" Margin="0,-5,0,0">
             <Button x:Name="home" Content="Home" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="Top" Foreground="Black" FontWeight="Normal" BorderThickness="0" Click="home_Click" />
         </DockPanel>
-        <DockPanel Height="31" FlowDirection="LeftToRight" LastChildFill="False"  VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" Margin="87,0,0,0"/>
+        <DockPanel FlowDirection="LeftToRight" LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" Margin="87,-4,0,0" Height="31" VerticalAlignment="Top"/>
         <Button x:Name="search" Content="Search" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" RenderTransformOrigin="-0.477,1.452" Margin="0,31,0,0"  FontWeight="Normal" BorderThickness="0" Height="31" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Click="search_Click">
 
         </Button>
         <Button x:Name="reservation" Content="Reservation" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" RenderTransformOrigin="-0.477,1.452" Margin="0,62,0,0"  FontWeight="Normal" BorderThickness="0" Height="31" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Click="reservation_Click" >
 
         </Button>
-        <Label x:Name="label2" Content="Description" HorizontalAlignment="Left" Margin="92,130,0,-12" Width="89"/>
-        <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" VerticalAlignment="Bottom" Height="27" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Click="addHotel_Click" />
+        <Label x:Name="label2" Content="Description" HorizontalAlignment="Left" Margin="91,107,0,11" Width="89"/>
+        <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Click="addHotel_Click" Margin="0,0,0,10" Height="30" VerticalAlignment="Bottom" />
         <Label x:Name="label" Content="Name" HorizontalAlignment="Left" Margin="92,39,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Address" HorizontalAlignment="Left" Margin="400,32,0,0" VerticalAlignment="Top" Height="31" RenderTransformOrigin="-0.355,-0.645" Width="88"/>
         <Label x:Name="label3" Content="Stars" HorizontalAlignment="Left" Margin="238,31,0,0" VerticalAlignment="Top"/>
@@ -32,8 +32,8 @@
         <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="149,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74"/>
         <ComboBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="290,80,0,0"  VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.459,0.652"/>
         <TextBox x:Name="textBox4" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Margin="149,79,0,0"/>
-        <TextBox x:Name="textBox6" Margin="92,151,10,0" TextWrapping="Wrap" Height="104" VerticalAlignment="Top"/>
-        <Button x:Name="button" Content="Add Hotel" HorizontalAlignment="Left" Margin="92,273,0,0" VerticalAlignment="Top" Width="89" RenderTransformOrigin="0.013,0.25"/>
+        <TextBox x:Name="textBox6" Margin="92,135,10,67" TextWrapping="Wrap"/>
+        <Button x:Name="button" Content="Add Hotel" HorizontalAlignment="Left" Margin="92,0,0,20" Width="89" RenderTransformOrigin="0.013,0.25" Height="20" VerticalAlignment="Bottom"/>
         <Label x:Name="label8" Content="ADD NEW HOTEL" HorizontalAlignment="Left" Margin="87,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.921,0.192"/>
     </Grid>
 </UserControl>
