@@ -135,16 +135,19 @@ namespace Booking
 
         private void ReserveBTN_Click(object sender, RoutedEventArgs e)
         {
-            r_room room = (r_room)listBoxRooms.SelectedItem;
-            re_reservation reserv = new re_reservation();
+            if (listBoxRooms.SelectedItem != null)
+            {
+                r_room room = (r_room)listBoxRooms.SelectedItem;
+                re_reservation reserv = new re_reservation();
 
-            reserv.re_r_room = room.r_number;
-            reserv.re_checkIn = checkInDP.SelectedDate.Value;
-            reserv.re_checkOut = checkOutDP.SelectedDate.Value;
+                reserv.re_r_room = room.r_number;
+                reserv.re_checkIn = checkInDP.SelectedDate.Value;
+                reserv.re_checkOut = checkOutDP.SelectedDate.Value;
 
-            db.re_reservation.Add(reserv);
-            db.SaveChanges();
-            textBlock.Text = "Room reserved!";
+                db.re_reservation.Add(reserv);
+                db.SaveChanges();
+                textBlock.Text = "Room reserved!";
+            }
         }
     }
 }

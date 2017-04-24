@@ -81,6 +81,7 @@ namespace Booking
 
         private void SignUpBTN_Click(object sender, RoutedEventArgs e)
         {
+            blockError.Text = "";
             if (checkBoxSignup.IsChecked == true)
             {
                 ho_host host = new ho_host();
@@ -89,12 +90,20 @@ namespace Booking
                 host.ho_lastname = textLastname.Text;
                 host.ho_password = textPassword.Text;
 
-                if (db.ho_host.Contains(host))
-                    blockError.Text = "This host already exists, please choose another username!";
-                else
+                List<ho_host> lihosts = db.ho_host.ToList();
+                foreach (ho_host element in lihosts)
+                {
+                    if (element.ho_hostname == host.ho_hostname)
+                        blockError.Text = "This host already exists, please choose another username!";
+                }
+                if (blockError.Text == "")
                 {
                     db.ho_host.Add(host);
                     db.SaveChanges();
+
+                    content.Children.Clear();
+                    var nc = new Home();
+                    content.Children.Add(nc);
                 }
             }
             else
@@ -105,21 +114,32 @@ namespace Booking
                 user.u_username = textUsername.Text;
                 user.u_password = textPassword.Text;
 
-                 if (db.u_user.Contains(user))
-                     blockError.Text = "This user already exists, please choose another username!";
-                 else
-                 {
-                     db.u_user.Add(user);
-                     db.SaveChanges();
-                 }
+                List<u_user> liusers = db.u_user.ToList();
+                foreach (u_user element in liusers)
+                {
+                    if (element.u_username == user.u_username)
+                        blockError.Text = "This user already exists, please choose another username!";
+                }
+                if (blockError.Text == "")
+                {
+                    db.u_user.Add(user);
+                    db.SaveChanges();
+
+                    content.Children.Clear();
+                    var nc = new Home();
+                    content.Children.Add(nc);
+                }
+                
             }
         }
 
         private void LogInBTN_Click(object sender, RoutedEventArgs e)
         {
+            Boolean loggedIn = false;
+            blockError.Text = "";
             if (checkBoxLogin.IsChecked == true)
             {
-                List<ho_host> lihosts = db.ho_host?.ToList();
+                List<ho_host> lihosts = db.ho_host.ToList();
                 foreach(ho_host element in lihosts)
                 {
                     if(element.ho_hostname == logInUsername.Text && element.ho_password == logInPassword.Text)
@@ -127,28 +147,34 @@ namespace Booking
                         content.Children.Clear();
                         var nc = new Home();
                         content.Children.Add(nc);
-                    }
-                    else
-                    {
-                        blockError.Text = "This host does not exist, make sure the username/password is correct, or sign up if you haven't already!";
+                        loggedIn = true;
                     }
                 }
+                if (loggedIn == false)
+                blockError.Text = "This host does not exist, make sure the username/password is correct, or sign up if you haven't already!";
             }
             else
             {
-                List<u_user> liusers = db.u_user?.ToList();
+                List<u_user> liusers = db.u_user.ToList();
+
+                u_user user = new u_user();
+                user.u_username = logInUsername.Text;
+                user.u_password = logInPassword.Text;
+
                 foreach (u_user element in liusers)
                 {
-                    if (element.u_username == logInUsername.Text && element.u_password == logInPassword.Text)
+                    if (element.u_username == user.u_username && element.u_password == user.u_password)
                     {
-                        content.Children.Clear();
-                        var nc = new Home();
-                        content.Children.Add(nc);
+                        loggedIn = true;
                     }
-                    else
-                    {
-                        blockError.Text = "This user does not exist, make sure the username/password is correct, or sign up if you haven't already!";
-                    }
+                }
+                if (loggedIn==false)
+                blockError.Text = "This user does not exist, make sure the username/password is correct, or sign up if you haven't already!";
+                else
+                {
+                    content.Children.Clear();
+                    var nc = new Home();
+                    content.Children.Add(nc);
                 }
             }
 
