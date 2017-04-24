@@ -14,6 +14,15 @@ namespace Booking
     
     public partial class tr_typeOfRoom
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tr_typeOfRoom()
+        {
+            this.r_room = new HashSet<r_room>();
+        }
+    
         public string tr_type { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<r_room> r_room { get; set; }
     }
 }

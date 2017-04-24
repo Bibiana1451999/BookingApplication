@@ -22,8 +22,8 @@
 
         </Button>
 
-        <ListBox x:Name="listBoxHotels" DisplayMemberPath="h_name" HorizontalAlignment="Left" Margin="86,36,0,-10" Width="100"/>
-        <ListBox x:Name="listBoxRooms" DataContext="{Binding ElementName=lihotels, Path=SelectedItem}" HorizontalAlignment="Left" Height="219" Margin="186,36,0,-10" VerticalAlignment="Top" Width="100">
+        <ListBox x:Name="listBoxHotels" DisplayMemberPath="h_name" HorizontalAlignment="Left" Margin="86,31,0,0" Width="128"/>
+        <ListBox x:Name="listBoxRooms" DataContext="{Binding ElementName=lihotels, Path=SelectedItem}" HorizontalAlignment="Left" Margin="214,31,0,0" Width="128">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -38,15 +38,13 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <DatePicker x:Name="checkInDP" Margin="288,120,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="102"/>
-        <DatePicker x:Name="checkOutDP" Margin="448,120,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="102"/>
-        <Label x:Name="label" Content="Check-in" Margin="288,100,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="56"/>
-        <Label x:Name="label1" Content="Check-out" Margin="448,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.394,-0.962" HorizontalAlignment="Left" Width="65"/>
-        <ComboBox x:Name="comboBoxRooms" Margin="348,159,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42"/>
-        <Label x:Name="label2" Content="Rooms" Margin="302,155,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="46"/>
-        <Label x:Name="label3" Content="Beds" Margin="462,155,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="51"/>
-        <ComboBox x:Name="comboBoxBeds" Margin="504,159,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="39" RenderTransformOrigin="0.462,0.591"/>
-        <ComboBox x:Name="comboBoxCities" Margin="289,62,0,0" RenderTransformOrigin="0.5,0.5" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="262">
+        <DatePicker x:Name="checkInDP" Margin="423,97,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="102"/>
+        <DatePicker x:Name="checkOutDP" Margin="423,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="102"/>
+        <Label x:Name="label" Content="Check-in" Margin="351,97,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="56"/>
+        <Label x:Name="label1" Content="Check-out" Margin="351,124,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.394,-0.962" HorizontalAlignment="Left" Width="65"/>
+        <Label x:Name="label3" Content="Beds" Margin="351,155,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="51"/>
+        <ComboBox x:Name="comboBoxBeds" Margin="423,159,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="39" RenderTransformOrigin="0.462,0.591"/>
+        <ComboBox x:Name="comboBoxCities" Margin="406,62,0,0" RenderTransformOrigin="0.5,0.5" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="145">
             <ComboBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -56,10 +54,10 @@
                 </TransformGroup>
             </ComboBox.RenderTransform>
         </ComboBox>
-        <Label x:Name="label4" Content="City:" Margin="288,36,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="39"/>
+        <Label x:Name="label4" Content="City:" Margin="351,62,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="39"/>
         <Button x:Name="ReserveBTN" Click="ReserveBTN_Click" Content="Reserve" HorizontalAlignment="Left" Margin="475,225,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" VerticalAlignment="Bottom" Height="27" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Click="addHotel_Click" Margin="0,0,0,10" />
-        <Button x:Name="SearchBTN" Click="SearchBTN_Click" Content="Search" HorizontalAlignment="Left" Height="20" Margin="331,225,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="SearchBTN" Click="SearchBTN_Click" Content="Search" HorizontalAlignment="Left" Height="20" Margin="347,225,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="307,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Height="25"/>
 
     </Grid>

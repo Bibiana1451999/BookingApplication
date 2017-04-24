@@ -13,7 +13,7 @@
         <Label x:Name="label" Content="Username:" HorizontalAlignment="Left" Margin="110,188,0,0" VerticalAlignment="Top" Width="71" Height="24" RenderTransformOrigin="0.253,0.615"/>
         <TextBox x:Name="logInUsername" HorizontalAlignment="Left" Height="24" Margin="186,188,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100"/>
         <Label x:Name="label_Copy" Content="Password:" HorizontalAlignment="Left" Margin="110,218,0,0" VerticalAlignment="Top" Width="71" Height="24" RenderTransformOrigin="0.253,0.615"/>
-        <TextBox x:Name="logInPassword" HorizontalAlignment="Left" Height="24" Margin="186,218,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100"/>
+        <PasswordBox x:Name="logInPassword" HorizontalAlignment="Left" Height="24" Margin="186,218,0,0" VerticalAlignment="Top" Width="100"/>
         <Button x:Name="LogInBTN" Click="LogInBTN_Click" Content="Log in" HorizontalAlignment="Left" Margin="201,251,0,0" VerticalAlignment="Top" Width="83"/>
 
         <DockPanel  LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" HorizontalAlignment="Left"  Width="87" AutomationProperties.IsOffscreenBehavior="Onscreen">
@@ -35,7 +35,7 @@
         <TextBox x:Name="textFirstname" Height="21" Margin="400,188,5,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="textLastname" Height="21" Margin="400,218,5,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
         <TextBox x:Name="textUsername" Height="20" Margin="400,251,5,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
-        <TextBox x:Name="textPassword" Height="20" Margin="400,278,5,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
+        <PasswordBox x:Name="textPassword" Height="20" Margin="400,278,5,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="blockError" IsEnabled="False" Margin="110,278,308,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="89"/>
     </Grid>
 

@@ -83,7 +83,6 @@ namespace Booking
             for(int i=1; i < 7; i++)
             {
                 comboBoxBeds.Items.Add(i);
-                comboBoxRooms.Items.Add(i);
             }
         }
 
@@ -91,7 +90,7 @@ namespace Booking
         {
             string destination = comboBoxCities.SelectedItem.ToString();
             string[] arr = destination.Split(',');
-
+            bool booked = false;
             List<h_hotel> lihotels = new List<h_hotel>();
             List<r_room> lirooms = new List<r_room>();
 
@@ -109,14 +108,13 @@ namespace Booking
                                 {
                                     if (reservation.re_r_room == room.r_number)
                                     {
-                                        if (checkInDP.SelectedDate.Value > reservation.re_checkOut || checkOutDP.SelectedDate.Value < reservation.re_checkIn)
+                                        if ((checkInDP.SelectedDate.Value < reservation.re_checkOut && checkInDP.SelectedDate.Value > reservation.re_checkIn) || (checkOutDP.SelectedDate.Value > reservation.re_checkIn && checkOutDP.SelectedDate.Value < reservation.re_checkOut))
                                         {
-                                            lirooms.Add(room);
-                                            lihotels.Add(element);
+                                            booked = true;
                                         }
                                     }
                                 }
-                                if (lirooms.Count() == 0)
+                                if (booked == false)
                                 {
                                     lirooms.Add(room);
                                     lihotels.Add(element);

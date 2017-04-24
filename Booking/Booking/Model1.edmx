@@ -34,7 +34,7 @@
           <Property Name="ho_hostname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ho_fistname" Type="varchar" MaxLength="50" />
           <Property Name="ho_lastname" Type="varchar" MaxLength="50" />
-          <Property Name="ho_password" Type="varchar" MaxLength="50" />
+          <Property Name="ho_password" Type="varchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="r_room">
           <Key>
@@ -45,14 +45,15 @@
           <Property Name="r_beds" Type="int" />
           <Property Name="r_price" Type="decimal" Precision="4" Scale="0" />
           <Property Name="r_description" Type="varchar" MaxLength="100" />
+          <Property Name="r_tr_typeOfRoom" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ra_rating">
           <Key>
-            <PropertyRef Name="r_rating" />
+            <PropertyRef Name="ra_rating" />
           </Key>
-          <Property Name="r_rating" Type="int" Nullable="false" />
-          <Property Name="r_comment" Type="nchar" MaxLength="100" />
-          <Property Name="r_u_user" Type="varchar" MaxLength="50" />
+          <Property Name="ra_rating" Type="int" Nullable="false" />
+          <Property Name="ra_comment" Type="nchar" MaxLength="100" />
+          <Property Name="ra_u_user" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="re_reservation">
           <Key>
@@ -83,7 +84,7 @@
           <Property Name="u_username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="u_firstName" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="u_lastName" Type="nchar" MaxLength="20" Nullable="false" />
-          <Property Name="u_password" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="u_password" Type="nchar" MaxLength="1000" Nullable="false" />
         </EntityType>
         <Association Name="FK_h_hotel_ToDestination">
           <End Role="d_destination" Type="Self.d_destination" Multiplicity="1" />
@@ -123,6 +124,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_r_room_ToRoom">
+          <End Role="tr_typeOfRoom" Type="Self.tr_typeOfRoom" Multiplicity="0..1" />
+          <End Role="r_room" Type="Self.r_room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tr_typeOfRoom">
+              <PropertyRef Name="tr_type" />
+            </Principal>
+            <Dependent Role="r_room">
+              <PropertyRef Name="r_tr_typeOfRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ra_rating_To_u_user">
           <End Role="u_user" Type="Self.u_user" Multiplicity="0..1" />
           <End Role="ra_rating" Type="Self.ra_rating" Multiplicity="*" />
@@ -131,7 +144,7 @@
               <PropertyRef Name="u_username" />
             </Principal>
             <Dependent Role="ra_rating">
-              <PropertyRef Name="r_u_user" />
+              <PropertyRef Name="ra_u_user" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -179,6 +192,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_r_room_ToHotel" Association="Self.FK_r_room_ToHotel">
             <End Role="h_hotel" EntitySet="h_hotel" />
+            <End Role="r_room" EntitySet="r_room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_r_room_ToRoom" Association="Self.FK_r_room_ToRoom">
+            <End Role="tr_typeOfRoom" EntitySet="tr_typeOfRoom" />
             <End Role="r_room" EntitySet="r_room" />
           </AssociationSet>
           <AssociationSet Name="FK_ra_rating_To_u_user" Association="Self.FK_ra_rating_To_u_user">
@@ -233,7 +250,7 @@
           <Property Name="ho_hostname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ho_fistname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ho_lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ho_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ho_password" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="h_hotel" Relationship="Self.FK_h_hotel_ToHost" FromRole="ho_host" ToRole="h_hotel" />
         </EntityType>
         <EntityType Name="r_room">
@@ -245,16 +262,18 @@
           <Property Name="r_beds" Type="Int32" />
           <Property Name="r_price" Type="Decimal" Precision="4" Scale="0" />
           <Property Name="r_description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="r_tr_typeOfRoom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="h_hotel" Relationship="Self.FK_r_room_ToHotel" FromRole="r_room" ToRole="h_hotel" />
+          <NavigationProperty Name="tr_typeOfRoom" Relationship="Self.FK_r_room_ToRoom" FromRole="r_room" ToRole="tr_typeOfRoom" />
           <NavigationProperty Name="re_reservation" Relationship="Self.FK_re_reservation_ToRoom" FromRole="r_room" ToRole="re_reservation" />
         </EntityType>
         <EntityType Name="ra_rating">
           <Key>
-            <PropertyRef Name="r_rating" />
+            <PropertyRef Name="ra_rating1" />
           </Key>
-          <Property Name="r_rating" Type="Int32" Nullable="false" />
-          <Property Name="r_comment" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="r_u_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ra_rating1" Type="Int32" Nullable="false" />
+          <Property Name="ra_comment" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ra_u_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="u_user" Relationship="Self.FK_ra_rating_To_u_user" FromRole="ra_rating" ToRole="u_user" />
         </EntityType>
         <EntityType Name="re_reservation">
@@ -280,6 +299,7 @@
             <PropertyRef Name="tr_type" />
           </Key>
           <Property Name="tr_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="r_room" Relationship="Self.FK_r_room_ToRoom" FromRole="tr_typeOfRoom" ToRole="r_room" />
         </EntityType>
         <EntityType Name="u_user">
           <Key>
@@ -288,7 +308,7 @@
           <Property Name="u_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="u_firstName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="u_lastName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="u_password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="u_password" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ra_rating" Relationship="Self.FK_ra_rating_To_u_user" FromRole="u_user" ToRole="ra_rating" />
         </EntityType>
         <Association Name="FK_h_hotel_ToDestination">
@@ -341,6 +361,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_r_room_ToRoom">
+          <End Role="tr_typeOfRoom" Type="Self.tr_typeOfRoom" Multiplicity="0..1" />
+          <End Role="r_room" Type="Self.r_room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tr_typeOfRoom">
+              <PropertyRef Name="tr_type" />
+            </Principal>
+            <Dependent Role="r_room">
+              <PropertyRef Name="r_tr_typeOfRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_re_reservation_ToRoom">
           <End Role="r_room" Type="Self.r_room" Multiplicity="1" />
           <End Role="re_reservation" Type="Self.re_reservation" Multiplicity="*" />
@@ -361,7 +393,7 @@
               <PropertyRef Name="u_username" />
             </Principal>
             <Dependent Role="ra_rating">
-              <PropertyRef Name="r_u_user" />
+              <PropertyRef Name="ra_u_user" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -390,6 +422,10 @@
           <AssociationSet Name="FK_se_services_ToHotel" Association="Self.FK_se_services_ToHotel">
             <End Role="h_hotel" EntitySet="h_hotel" />
             <End Role="se_services" EntitySet="se_services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_r_room_ToRoom" Association="Self.FK_r_room_ToRoom">
+            <End Role="tr_typeOfRoom" EntitySet="tr_typeOfRoom" />
+            <End Role="r_room" EntitySet="r_room" />
           </AssociationSet>
           <AssociationSet Name="FK_re_reservation_ToRoom" Association="Self.FK_re_reservation_ToRoom">
             <End Role="r_room" EntitySet="r_room" />
@@ -447,15 +483,16 @@
                 <ScalarProperty Name="r_beds" ColumnName="r_beds" />
                 <ScalarProperty Name="r_price" ColumnName="r_price" />
                 <ScalarProperty Name="r_description" ColumnName="r_description" />
+                <ScalarProperty Name="r_tr_typeOfRoom" ColumnName="r_tr_typeOfRoom" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ra_rating">
             <EntityTypeMapping TypeName="ebookingModel.ra_rating">
               <MappingFragment StoreEntitySet="ra_rating">
-                <ScalarProperty Name="r_rating" ColumnName="r_rating" />
-                <ScalarProperty Name="r_comment" ColumnName="r_comment" />
-                <ScalarProperty Name="r_u_user" ColumnName="r_u_user" />
+                <ScalarProperty Name="ra_rating1" ColumnName="ra_rating" />
+                <ScalarProperty Name="ra_comment" ColumnName="ra_comment" />
+                <ScalarProperty Name="ra_u_user" ColumnName="ra_u_user" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

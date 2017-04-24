@@ -25,8 +25,10 @@ namespace Booking
         public Nullable<int> r_beds { get; set; }
         public Nullable<decimal> r_price { get; set; }
         public string r_description { get; set; }
+        public string r_tr_typeOfRoom { get; set; }
     
         public virtual h_hotel h_hotel { get; set; }
+        public virtual tr_typeOfRoom tr_typeOfRoom { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<re_reservation> re_reservation { get; set; }
     }

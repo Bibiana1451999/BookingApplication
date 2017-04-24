@@ -14,9 +14,9 @@ namespace Booking
     
     public partial class ra_rating
     {
-        public int r_rating { get; set; }
-        public string r_comment { get; set; }
-        public string r_u_user { get; set; }
+        public int ra_rating1 { get; set; }
+        public string ra_comment { get; set; }
+        public string ra_u_user { get; set; }
     
         public virtual u_user u_user { get; set; }
     }
