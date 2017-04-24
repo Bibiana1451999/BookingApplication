@@ -103,15 +103,9 @@ namespace Booking
             hotel.h_d_city = arr[0];
             hotel.h_d_country = arr[1];
 
-            if (db.h_hotel.Contains(hotel))
-            {
-                errorBlock.Text = "This Hotel already exists, please add another one!";
-            }
-            else
-            {
-                db.h_hotel.Add(hotel);
-                db.SaveChanges();
-            }
+            db.h_hotel.Add(hotel);
+            db.SaveChanges();
+            
         }
     }
 }

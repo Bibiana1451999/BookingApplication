@@ -52,7 +52,7 @@
             <PropertyRef Name="ra_rating" />
           </Key>
           <Property Name="ra_rating" Type="int" Nullable="false" />
-          <Property Name="ra_comment" Type="nchar" MaxLength="100" />
+          <Property Name="ra_comment" Type="varchar" MaxLength="100" />
           <Property Name="ra_u_user" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="re_reservation">
@@ -82,9 +82,9 @@
             <PropertyRef Name="u_username" />
           </Key>
           <Property Name="u_username" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="u_firstName" Type="nchar" MaxLength="20" Nullable="false" />
-          <Property Name="u_lastName" Type="nchar" MaxLength="20" Nullable="false" />
-          <Property Name="u_password" Type="nchar" MaxLength="1000" Nullable="false" />
+          <Property Name="u_firstName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="u_lastName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="u_password" Type="varchar" MaxLength="1000" Nullable="false" />
         </EntityType>
         <Association Name="FK_h_hotel_ToDestination">
           <End Role="d_destination" Type="Self.d_destination" Multiplicity="1" />
@@ -272,7 +272,7 @@
             <PropertyRef Name="ra_rating1" />
           </Key>
           <Property Name="ra_rating1" Type="Int32" Nullable="false" />
-          <Property Name="ra_comment" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ra_comment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ra_u_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="u_user" Relationship="Self.FK_ra_rating_To_u_user" FromRole="ra_rating" ToRole="u_user" />
         </EntityType>
@@ -306,9 +306,9 @@
             <PropertyRef Name="u_username" />
           </Key>
           <Property Name="u_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="u_firstName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="u_lastName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="u_password" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="u_firstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="u_lastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="u_password" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="ra_rating" Relationship="Self.FK_ra_rating_To_u_user" FromRole="u_user" ToRole="ra_rating" />
         </EntityType>
         <Association Name="FK_h_hotel_ToDestination">

@@ -168,16 +168,16 @@ namespace Booking
             else
             {
                 List<u_user> liusers = db.u_user.ToList();
-
                 foreach (u_user element in liusers)
                 {
-                    if (element.u_username == logInUsername.Text && element.u_password == sha256(logInPassword.Password))
+                    if (element.u_username == logInUsername.Text && element.u_password.Trim() == sha256(logInPassword.Password))
                     {
-                        loggedIn = true;
                         content.Children.Clear();
                         var nc = new Home();
                         content.Children.Add(nc);
+                        loggedIn = true;
                     }
+                   
                 }
                 if (loggedIn==false)
                 blockError.Text = "This user does not exist, make sure the username/password is correct, or sign up if you haven't already!";
