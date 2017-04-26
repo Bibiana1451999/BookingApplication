@@ -58,7 +58,7 @@
         <Button x:Name="ReserveBTN" Click="ReserveBTN_Click" Content="Reserve" HorizontalAlignment="Left" Margin="475,225,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" VerticalAlignment="Bottom" Height="27" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Click="addHotel_Click" Margin="0,0,0,10" />
         <Button x:Name="SearchBTN" Click="SearchBTN_Click" Content="Search" HorizontalAlignment="Left" Height="20" Margin="347,225,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="351,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Height="25"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="351,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Height="34"/>
 
     </Grid>
 </UserControl>

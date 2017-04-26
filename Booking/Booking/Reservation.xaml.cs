@@ -88,46 +88,59 @@ namespace Booking
 
         private void SearchBTN_Click(object sender, RoutedEventArgs e)
         {
-            string destination = comboBoxCities.SelectedItem.ToString();
-            string[] arr = destination.Split(',');
-            bool booked = false;
-            List<h_hotel> lihotels = new List<h_hotel>();
-            List<r_room> lirooms = new List<r_room>();
+            textBlock.Text = "";
+                string destination = comboBoxCities.SelectedItem.ToString();
+                string[] arr = destination.Split(',');
+                bool booked = false;
+                List<h_hotel> lihotels = new List<h_hotel>();
+                List<r_room> lirooms = new List<r_room>();
 
-            foreach (h_hotel element in db.h_hotel)
-            {
-                if (element.h_d_city == arr[0] && element.h_d_country == arr[1])
+            
+                if ((checkInDP.SelectedDate.Value < checkOutDP.SelectedDate.Value) && (checkInDP.SelectedDate.Value > DateTime.Today))
                 {
-                    foreach (r_room room in db.r_room)
+                    foreach (h_hotel element in db.h_hotel)
                     {
-                        if (room.r_beds == int.Parse(comboBoxBeds.SelectedItem.ToString()))
+                        if (element.h_d_city == arr[0] && element.h_d_country == arr[1])
                         {
-                            if (room.r_h_hotel == element.h_hotelid)
+                            foreach (r_room room in db.r_room)
                             {
-                                foreach (re_reservation reservation in db.re_reservation)
+                                if (room.r_beds == int.Parse(comboBoxBeds.SelectedItem.ToString()))
                                 {
-                                    if (reservation.re_r_room == room.r_number)
+                                    if (room.r_h_hotel == element.h_hotelid)
                                     {
-                                        if ((checkInDP.SelectedDate.Value < reservation.re_checkOut && checkInDP.SelectedDate.Value > reservation.re_checkIn) || (checkOutDP.SelectedDate.Value > reservation.re_checkIn && checkOutDP.SelectedDate.Value < reservation.re_checkOut))
+                                        foreach (re_reservation reservation in db.re_reservation)
                                         {
-                                            booked = true;
+                                            if (reservation.re_r_room == room.r_number)
+                                            {
+                                                if ((checkInDP.SelectedDate.Value < reservation.re_checkOut && checkInDP.SelectedDate.Value > reservation.re_checkIn) || (checkOutDP.SelectedDate.Value > reservation.re_checkIn && checkOutDP.SelectedDate.Value < reservation.re_checkOut))
+                                                {
+                                                    booked = true;
+                                                }
+                                            }
+                                        }
+                                        if (booked == false)
+                                        {
+                                            lirooms.Add(room);
+                                            lihotels.Add(element);
                                         }
                                     }
                                 }
-                                if (booked == false)
-                                {
-                                    lirooms.Add(room);
-                                    lihotels.Add(element);
-                                }
                             }
                         }
+
+
+                        listBoxHotels.ItemsSource = lihotels;
+                        listBoxRooms.ItemsSource = lirooms;
                     }
                 }
-
-
-                listBoxHotels.ItemsSource = lihotels;
-                listBoxRooms.ItemsSource = lirooms;
-            }
+                else
+                {
+                    if (checkInDP.SelectedDate.Value <= DateTime.Today)
+                        textBlock.Text = "You can only make reservations in the days to come!";
+                    else
+                        textBlock.Text = "Check in should be earlier than check out!";
+                }
+            
 
         }
 
