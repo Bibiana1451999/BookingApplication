@@ -12,12 +12,12 @@ namespace Booking
     using System;
     using System.Collections.Generic;
     
-    public partial class se_services
+    public partial class sysdiagram
     {
-        public int se_serviceid { get; set; }
-        public string se_services1 { get; set; }
-        public int se_h_hotel { get; set; }
-    
-        public virtual h_hotel h_hotel { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

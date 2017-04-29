@@ -20,11 +20,14 @@ namespace Booking
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static bool isLoggedIn;
+        public static bool isHostLoggedIn;
         Entities db = new Entities();
         public MainWindow()
         {
             InitializeComponent();
-        }
+            isLoggedIn = false;
+       }
         static string sha256(string password)
         {
             System.Security.Cryptography.SHA256Managed crypt = new System.Security.Cryptography.SHA256Managed();
@@ -59,6 +62,8 @@ namespace Booking
                     db.ho_host.Add(host);
                     db.SaveChanges();
 
+                    isHostLoggedIn = true;
+                    isLoggedIn = true;
                     contentchange.Children.Clear();
                     var nc = new Home();
                     contentchange.Children.Add(nc);
@@ -83,6 +88,8 @@ namespace Booking
                     db.u_user.Add(user);
                     db.SaveChanges();
 
+                    isHostLoggedIn = false;
+                    isLoggedIn = true;
                     contentchange.Children.Clear();
                     var nc = new Home();
                     contentchange.Children.Add(nc);
@@ -93,7 +100,6 @@ namespace Booking
 
         private void LogInBTN_Click(object sender, RoutedEventArgs e)
         {
-            Boolean loggedIn = false;
             blockError.Text = "";
             if (checkBoxLogin.IsChecked == true)
             {
@@ -105,10 +111,11 @@ namespace Booking
                         contentchange.Children.Clear();
                         var nc = new Home();
                         contentchange.Children.Add(nc);
-                        loggedIn = true;
+                        isLoggedIn = true;
+                        isHostLoggedIn = true;
                     }
                 }
-                if (loggedIn == false)
+                if (isLoggedIn == false)
                 blockError.Text = "This host does not exist, make sure the username/password is correct, or sign up if you haven't already!";
             }
             else
@@ -121,11 +128,12 @@ namespace Booking
                         contentchange.Children.Clear();
                         var nc = new Home();
                         contentchange.Children.Add(nc);
-                        loggedIn = true;
+                        isLoggedIn = true;
+                        isHostLoggedIn = false;
                     }
                    
                 }
-                if (loggedIn==false)
+                if (isLoggedIn == false)
                 blockError.Text = "This user does not exist, make sure the username/password is correct, or sign up if you haven't already!";
             }
 
@@ -133,53 +141,44 @@ namespace Booking
 
         private void addHotel_Click(object sender, RoutedEventArgs e)
         {
-            contentchange.Children.Clear();
-
-
-            var nc = new AddHotel();
-
-            contentchange.Children.Add(nc);
-
+            if (isLoggedIn && isHostLoggedIn)
+            {
+                contentchange.Children.Clear();
+                var nc = new AddHotel();
+                contentchange.Children.Add(nc);
+            }
         }
 
 
         private void reservation_Click(object sender, RoutedEventArgs e)
         {
-            contentchange.Children.Clear();
-
-
-            var nc = new Reservation();
-
-            contentchange.Children.Add(nc);
-
-
-
-
+            if (isLoggedIn)
+            {
+                contentchange.Children.Clear();
+                var nc = new Reservation();
+                contentchange.Children.Add(nc);
+            }
         }
 
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            contentchange.Children.Clear();
-
-
-            var nc = new Search();
-
-            contentchange.Children.Add(nc);
-
+            if (isLoggedIn)
+            {
+                contentchange.Children.Clear();
+                var nc = new Search();
+                contentchange.Children.Add(nc);
+            }
         }
 
         private void home_Click(object sender, RoutedEventArgs e)
         {
-
-
-
-            contentchange.Children.Clear();
-
-
-            var nc = new Home();
-
-            contentchange.Children.Add(nc);
+            if (isLoggedIn)
+            {
+                contentchange.Children.Clear();
+                var nc = new Home();
+                contentchange.Children.Add(nc);
+            }
         }
 
     }

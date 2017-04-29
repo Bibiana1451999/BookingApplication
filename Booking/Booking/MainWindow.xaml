@@ -7,10 +7,9 @@
         xmlns:local="clr-namespace:Booking"
         mc:Ignorable="d"
         Title="BookingApp" Width="600" Grid.IsSharedSizeScope="True" Height="420">
-
+    
     <Grid x:Name="content" Margin="0,0,0,-11">
         <Grid x:Name="contentchange">
-
             <Image x:Name="image"  Height="122" Margin="178,44,114,0" VerticalAlignment="Top" Source="Logomakr_646VVt.png" Grid.IsSharedSizeScope="True"/>
             <Label x:Name="label" Content="Username:" HorizontalAlignment="Left" Margin="110,188,0,0" VerticalAlignment="Top" Width="71" Height="24" RenderTransformOrigin="0.253,0.615"/>
             <TextBox x:Name="logInUsername" HorizontalAlignment="Left" Height="24" Margin="186,188,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100"/>

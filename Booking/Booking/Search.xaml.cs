@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Booking;
-
+using System.Windows.Forms;
 
 namespace Booking
 {
@@ -17,7 +17,14 @@ namespace Booking
         {
             InitializeComponent();
         }
-     
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            /*
+            comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;*/
+        }
+
 
         private void searchBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -36,7 +43,21 @@ namespace Booking
             TextCountry.Content = seHotel.h_d_country;
             TextStars.Content = seHotel.h_stars;
             TextZIP.Content = seHotel.h_zip;
+
+            var services = from h in db.h_hotel
+                    from s in h.se_services
+                    where h.h_hotelid == seHotel.h_hotelid
+                    select s.se_services1;
+
+            for (int i = 0; i < services.Count(); i++)
+            {
+                if(i != services.Count()-1)
+                    ServicesText.Text = ServicesText.Text + services.ToArray()[i] + ", ";
+                else
+                    ServicesText.Text = ServicesText.Text + services.ToArray()[i] + ".";
+            }
         }
+
     }
 
 }

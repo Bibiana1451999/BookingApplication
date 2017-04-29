@@ -32,6 +32,7 @@ namespace Booking
         public virtual DbSet<ra_rating> ra_rating { get; set; }
         public virtual DbSet<re_reservation> re_reservation { get; set; }
         public virtual DbSet<se_services> se_services { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tr_typeOfRoom> tr_typeOfRoom { get; set; }
         public virtual DbSet<u_user> u_user { get; set; }
     }

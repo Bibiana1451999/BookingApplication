@@ -18,7 +18,9 @@ namespace Booking
         public int re_r_room { get; set; }
         public System.DateTime re_checkIn { get; set; }
         public System.DateTime re_checkOut { get; set; }
+        public string re_u_username { get; set; }
     
         public virtual r_room r_room { get; set; }
+        public virtual u_user u_user { get; set; }
     }
 }

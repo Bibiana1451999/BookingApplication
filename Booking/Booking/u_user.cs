@@ -18,6 +18,7 @@ namespace Booking
         public u_user()
         {
             this.ra_rating = new HashSet<ra_rating>();
+            this.re_reservation = new HashSet<re_reservation>();
         }
     
         public string u_username { get; set; }
@@ -27,5 +28,7 @@ namespace Booking
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ra_rating> ra_rating { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<re_reservation> re_reservation { get; set; }
     }
 }

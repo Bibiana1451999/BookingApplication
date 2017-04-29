@@ -4,16 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2ba165d114fa43e1a7d0bd3b52989712" Name="Diagram1">
+      <Diagram DiagramId="da34cf0b9fce41a78dd6fadb48c1a901" Name="Diagram1">
         <EntityTypeShape EntityType="ebookingModel.d_destination" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="ebookingModel.h_hotel" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="ebookingModel.ho_host" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ebookingModel.r_room" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ebookingModel.ra_rating" Width="1.5" PointX="10" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ebookingModel.re_reservation" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ebookingModel.se_services" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebookingModel.ra_rating" Width="1.5" PointX="7.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebookingModel.re_reservation" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebookingModel.se_services" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebookingModel.sysdiagram" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ebookingModel.tr_typeOfRoom" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="ebookingModel.u_user" Width="1.5" PointX="7.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebookingModel.u_user" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
         <AssociationConnector Association="ebookingModel.FK_h_hotel_ToDestination" ManuallyRouted="false" />
         <AssociationConnector Association="ebookingModel.FK_h_hotel_ToHost" ManuallyRouted="false" />
         <AssociationConnector Association="ebookingModel.FK_r_room_ToHotel" ManuallyRouted="false" />
@@ -21,6 +22,7 @@
         <AssociationConnector Association="ebookingModel.FK_r_room_ToRoom" ManuallyRouted="false" />
         <AssociationConnector Association="ebookingModel.FK_re_reservation_ToRoom" ManuallyRouted="false" />
         <AssociationConnector Association="ebookingModel.FK_ra_rating_To_u_user" ManuallyRouted="false" />
+        <AssociationConnector Association="ebookingModel.FK_re_reservation_ToUser" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

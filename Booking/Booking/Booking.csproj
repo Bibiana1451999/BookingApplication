@@ -124,6 +124,9 @@
     <Compile Include="se_services.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="tr_typeOfRoom.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
