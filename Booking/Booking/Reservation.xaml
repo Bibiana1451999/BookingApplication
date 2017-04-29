@@ -20,7 +20,9 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="Room description:"/>
+                        <TextBlock Text="Type of room:"/>
+                        <TextBlock Text="{Binding Path=r_tr_typeOfRoom}"/>
+                        <TextBlock Text="Room description:" TextWrapping="Wrap"/>
                         <TextBlock Text="{Binding Path=r_description}" TextWrapping="Wrap"/>
                         <TextBlock Text="Price:"/>
                         <TextBlock Text="{Binding Path=r_price}"/>

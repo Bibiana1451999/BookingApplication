@@ -53,8 +53,18 @@ namespace Booking
             hotel.h_d_city = arr[0];
             hotel.h_d_country = arr[1];
 
-            db.h_hotel.Add(hotel);
-            db.SaveChanges();
+            var checking = from h in db.h_hotel
+                           where h.h_name == hotel.h_name && h.h_d_city == hotel.h_d_city && h.h_d_country == hotel.h_d_country
+                           select h;
+            if (checking == null)
+            {
+                db.h_hotel.Add(hotel);
+                db.SaveChanges();
+            }
+            else
+            {
+                errorBlock.Text = "A Hotel with that name already exists in " + hotel.h_d_city + ", please choose another location!";
+            }
             
         }
     }

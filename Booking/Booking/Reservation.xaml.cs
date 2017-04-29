@@ -38,21 +38,40 @@ namespace Booking
             {
                 comboBoxBeds.Items.Add(i);
             }
+
+            checkInDP.SelectedDate = DateTime.Today;
+            checkOutDP.SelectedDate = DateTime.Today;
         }
 
         private void SearchBTN_Click(object sender, RoutedEventArgs e)
         {
             textBlock.Text = "";
+
+            if (comboBoxCities.SelectedValue == null || comboBoxBeds.SelectedValue == null)
+                textBlock.Text = "Please do not leave anything empty!";
+            else
+            {
                 string destination = comboBoxCities.SelectedItem.ToString();
                 string[] arr = destination.Split(',');
                 bool booked = false;
                 List<h_hotel> lihotels = new List<h_hotel>();
                 List<r_room> lirooms = new List<r_room>();
 
-            
+
                 if ((checkInDP.SelectedDate.Value < checkOutDP.SelectedDate.Value) && (checkInDP.SelectedDate.Value > DateTime.Today))
                 {
-                    foreach (h_hotel element in db.h_hotel)
+                    /*var erg = from h in db.h_hotel
+                              from r in h.r_room
+                              from res in r.re_reservation
+                              where h.h_d_city == arr[0] 
+                              && h.h_d_country == arr[1] 
+                              && r.r_beds == int.Parse(comboBoxBeds.SelectedItem.ToString())
+                              && (checkInDP.SelectedDate.Value > res.re_checkOut || checkOutDP.SelectedDate.Value < res.re_checkIn)
+                              select r;
+                              */
+
+
+                   foreach (h_hotel element in db.h_hotel)
                     {
                         if (element.h_d_city == arr[0] && element.h_d_country == arr[1])
                         {
@@ -94,8 +113,8 @@ namespace Booking
                     else
                         textBlock.Text = "Check in should be earlier than check out!";
                 }
-            
 
+            }
         }
 
         private void ReserveBTN_Click(object sender, RoutedEventArgs e)
