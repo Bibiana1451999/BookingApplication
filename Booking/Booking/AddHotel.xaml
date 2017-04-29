@@ -8,18 +8,13 @@
             Height="Auto"  Loaded="UserControl_Loaded">
     <Grid x:Name="content"     >
         <Image x:Name="image" Source="Logomakr_646VVt.png" Grid.IsSharedSizeScope="True" HorizontalAlignment="Right" Width="128" Height="40" VerticalAlignment="Bottom" Margin="0,0,10,19"/>
-        <DockPanel  LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" HorizontalAlignment="Left"  Width="87" AutomationProperties.IsOffscreenBehavior="Onscreen">
-            <Button x:Name="home" Content="Home" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="Top" Foreground="Black" FontWeight="Normal" BorderThickness="0" Click="home_Click" />
-        </DockPanel>
+     
         <DockPanel Height="31" FlowDirection="LeftToRight" LastChildFill="False"  VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" Margin="87,0,0,0"/>
-        <Button x:Name="search" Content="Search" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" RenderTransformOrigin="-0.477,1.452" Margin="0,31,0,0"  FontWeight="Normal" BorderThickness="0" Height="31" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Click="search_Click">
-
-        </Button>
-        <Button x:Name="reservation" Content="Reservation" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" RenderTransformOrigin="-0.477,1.452" Margin="0,62,0,0"  FontWeight="Normal" BorderThickness="0" Height="31" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Click="reservation_Click" >
-
-        </Button>
+      
+     
+     
         <Label x:Name="label2" Content="Description" HorizontalAlignment="Left" Margin="92,130,0,-12" Width="89"/>
-        <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" VerticalAlignment="Bottom" Height="27" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Click="addHotel_Click" Margin="0,0,0,10" />
+        
         <Label x:Name="label" Content="Name" HorizontalAlignment="Left" Margin="92,39,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Address" HorizontalAlignment="Left" Margin="322,39,0,0" VerticalAlignment="Top" Height="26" RenderTransformOrigin="-0.355,-0.645" Width="61"/>
         <Label x:Name="label3" Content="Stars" HorizontalAlignment="Left" Margin="230,80,0,0" VerticalAlignment="Top"/>

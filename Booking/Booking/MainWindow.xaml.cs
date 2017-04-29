@@ -59,9 +59,9 @@ namespace Booking
                     db.ho_host.Add(host);
                     db.SaveChanges();
 
-                    content.Children.Clear();
+                    contentchange.Children.Clear();
                     var nc = new Home();
-                    content.Children.Add(nc);
+                    contentchange.Children.Add(nc);
                 }
             }
             else
@@ -83,9 +83,9 @@ namespace Booking
                     db.u_user.Add(user);
                     db.SaveChanges();
 
-                    content.Children.Clear();
+                    contentchange.Children.Clear();
                     var nc = new Home();
-                    content.Children.Add(nc);
+                    contentchange.Children.Add(nc);
                 }
                 
             }
@@ -102,9 +102,9 @@ namespace Booking
                 {
                     if(element.ho_hostname == logInUsername.Text && element.ho_password == sha256(logInPassword.Password))
                     {
-                        content.Children.Clear();
+                        contentchange.Children.Clear();
                         var nc = new Home();
-                        content.Children.Add(nc);
+                        contentchange.Children.Add(nc);
                         loggedIn = true;
                     }
                 }
@@ -118,9 +118,9 @@ namespace Booking
                 {
                     if (element.u_username == logInUsername.Text && element.u_password.Trim() == sha256(logInPassword.Password))
                     {
-                        content.Children.Clear();
+                        contentchange.Children.Clear();
                         var nc = new Home();
-                        content.Children.Add(nc);
+                        contentchange.Children.Add(nc);
                         loggedIn = true;
                     }
                    
@@ -130,5 +130,57 @@ namespace Booking
             }
 
         }
+
+        private void addHotel_Click(object sender, RoutedEventArgs e)
+        {
+            contentchange.Children.Clear();
+
+
+            var nc = new AddHotel();
+
+            contentchange.Children.Add(nc);
+
+        }
+
+
+        private void reservation_Click(object sender, RoutedEventArgs e)
+        {
+            contentchange.Children.Clear();
+
+
+            var nc = new Reservation();
+
+            contentchange.Children.Add(nc);
+
+
+
+
+        }
+
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            contentchange.Children.Clear();
+
+
+            var nc = new Search();
+
+            contentchange.Children.Add(nc);
+
+        }
+
+        private void home_Click(object sender, RoutedEventArgs e)
+        {
+
+
+
+            contentchange.Children.Clear();
+
+
+            var nc = new Home();
+
+            contentchange.Children.Add(nc);
+        }
+
     }
 }

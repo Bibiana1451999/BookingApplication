@@ -26,53 +26,7 @@ namespace Booking
             InitializeComponent();
         }
 
-        private void home_Click(object sender, RoutedEventArgs e)
-        {
-            content.Children.Clear();
-
-
-            var nc = new Home();
-
-            content.Children.Add(nc);
-
-
-        }
-
-        private void addHotel_Click(object sender, RoutedEventArgs e)
-        {
-
-            content.Children.Clear();
-
-
-            var nc = new AddHotel();
-
-            content.Children.Add(nc);
-
-
-        }
-
-        private void reservation_Click(object sender, RoutedEventArgs e)
-        {
-            content.Children.Clear();
-
-
-            var nc = new Reservation();
-
-            content.Children.Add(nc);
-
-        }
-
-        private void search_Click(object sender, RoutedEventArgs e)
-        {
-
-            content.Children.Clear();
-
-
-            var nc = new Search();
-
-            content.Children.Add(nc);
-
-        }
+      
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {

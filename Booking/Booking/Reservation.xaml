@@ -9,18 +9,11 @@
           Height="Auto"  Width="Auto" Grid.IsSharedSizeScope="True" Loaded="UserControl_Loaded">
     <Grid x:Name="content">
         <Image x:Name="image" Source="Logomakr_646VVt.png" Grid.IsSharedSizeScope="True" HorizontalAlignment="Right" Width="128" Height="40" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
-        <DockPanel  LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" HorizontalAlignment="Left"  Width="87" AutomationProperties.IsOffscreenBehavior="Onscreen">
-            <Button x:Name="home" Content="Home" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="Top" Foreground="Black" FontWeight="Normal" BorderThickness="0" Click="home_Click" />
-        </DockPanel>
+       
         <DockPanel Height="31" FlowDirection="LeftToRight" LastChildFill="False"  VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" Margin="87,0,0,0">
             <Label x:Name="label5" Content="RESERVATION" Height="31" VerticalAlignment="Top"/>
         </DockPanel>
-        <Button x:Name="Search" Content="Search" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" RenderTransformOrigin="-0.477,1.452" Margin="0,31,0,0"  FontWeight="Normal" BorderThickness="0" Height="31" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Click="search_Click">
-
-        </Button>
-        <Button x:Name="reservation" Content="Reservation" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" RenderTransformOrigin="-0.477,1.452" Margin="0,62,0,0"  FontWeight="Normal" BorderThickness="0" Height="31" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Click="reservation_Click" >
-
-        </Button>
+        
 
         <ListBox x:Name="listBoxHotels" DisplayMemberPath="h_name" HorizontalAlignment="Left" Margin="86,31,0,0" Width="128"/>
         <ListBox x:Name="listBoxRooms" DataContext="{Binding ElementName=lihotels, Path=SelectedItem}" HorizontalAlignment="Left" Margin="214,31,0,0" Width="128">
@@ -56,7 +49,7 @@
         </ComboBox>
         <Label x:Name="label4" Content="City:" Margin="351,62,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="39"/>
         <Button x:Name="ReserveBTN" Click="ReserveBTN_Click" Content="Reserve" HorizontalAlignment="Left" Margin="475,225,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" VerticalAlignment="Bottom" Height="27" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Click="addHotel_Click" Margin="0,0,0,10" />
+     
         <Button x:Name="SearchBTN" Click="SearchBTN_Click" Content="Search" HorizontalAlignment="Left" Height="20" Margin="347,225,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="351,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Height="34"/>
 
