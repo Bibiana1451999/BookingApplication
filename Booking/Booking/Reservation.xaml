@@ -9,37 +9,34 @@
           Height="Auto"  Width="Auto" Grid.IsSharedSizeScope="True" Loaded="UserControl_Loaded">
     <Grid x:Name="content">
         <Image x:Name="image" Source="Logomakr_646VVt.png" Grid.IsSharedSizeScope="True" HorizontalAlignment="Right" Width="128" Height="40" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
-       
+
         <DockPanel Height="31" FlowDirection="LeftToRight" LastChildFill="False"  VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" Margin="87,0,0,0">
             <Label x:Name="label5" Content="RESERVATION" Height="31" VerticalAlignment="Top"/>
         </DockPanel>
-        
 
-        <ListBox x:Name="listBoxHotels" DisplayMemberPath="h_name" HorizontalAlignment="Left" Margin="86,31,0,0" Width="128"/>
-        <ListBox x:Name="listBoxRooms" DataContext="{Binding ElementName=lihotels, Path=SelectedItem}" HorizontalAlignment="Left" Margin="214,31,0,0" Width="128">
+
+        <ListBox x:Name="listBoxRooms"  HorizontalAlignment="Left" Margin="87,31,0,0" Width="250">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="Type of room:"/>
-                        <TextBlock Text="{Binding Path=r_tr_typeOfRoom}"/>
-                        <TextBlock Text="Room description:" TextWrapping="Wrap"/>
-                        <TextBlock Text="{Binding Path=r_description}" TextWrapping="Wrap"/>
-                        <TextBlock Text="Price:"/>
-                        <TextBlock Text="{Binding Path=r_price}"/>
-                        <TextBlock Text="Beds:"/>
-                        <TextBlock Text="{Binding Path=r_beds}"/>
+                        <TextBlock Text="{Binding Path=h_hotel.h_name, StringFormat='Hotel: {0}'}"/>
+                        <TextBlock Text="{Binding Path=r_tr_typeOfRoom, StringFormat='Type of room: {0}'}"/>
+                        <TextBlock Text="{Binding Path=r_price, StringFormat='Price: {0}€'}"/>
+                        <TextBlock Text="{Binding Path=r_beds, StringFormat='Beds: {0}'}"/>
+                        <TextBlock Text="{Binding Path=r_description, StringFormat='Room description: {0}'}" TextWrapping="Wrap"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <DatePicker x:Name="checkInDP" Margin="423,97,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="102"/>
-        <DatePicker x:Name="checkOutDP" Margin="423,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="102"/>
-        <Label x:Name="label" Content="Check-in" Margin="351,97,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="56"/>
-        <Label x:Name="label1" Content="Check-out" Margin="351,124,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.394,-0.962" HorizontalAlignment="Left" Width="65"/>
-        <Label x:Name="label3" Content="Beds" Margin="351,155,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="51"/>
-        <ComboBox x:Name="comboBoxBeds" Margin="423,159,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="39" RenderTransformOrigin="0.462,0.591"/>
-        <ComboBox x:Name="comboBoxCities" Margin="406,62,0,0" RenderTransformOrigin="0.5,0.5" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="145">
+        <DatePicker x:Name="checkInDP" Margin="424,79,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="102"/>
+        <DatePicker x:Name="checkOutDP" Margin="424,112,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="102"/>
+        <Label x:Name="label" Content="Check-in" Margin="347,79,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="56"/>
+        <Label x:Name="label1" Content="Check-out" Margin="347,110,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.394,-0.962" HorizontalAlignment="Left" Width="65"/>
+        <Label x:Name="label3" Content="Beds" Margin="347,137,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="51"/>
+        <ComboBox x:Name="comboBoxBeds" Margin="424,141,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="39" RenderTransformOrigin="0.462,0.591"/>
+
+        <ComboBox x:Name="comboBoxCities" Margin="424,49,-24,0" RenderTransformOrigin="0.5,0.5" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150">
             <ComboBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -49,9 +46,9 @@
                 </TransformGroup>
             </ComboBox.RenderTransform>
         </ComboBox>
-        <Label x:Name="label4" Content="City:" Margin="351,62,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="39"/>
-        <Button x:Name="ReserveBTN" Click="ReserveBTN_Click" Content="Reserve" HorizontalAlignment="Left" Margin="475,225,0,0" VerticalAlignment="Top" Width="75"/>
-     
+        <Label x:Name="label4" Content="City:" Margin="351,53,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="39" RenderTransformOrigin="0.513,-0.077"/>
+        <Button x:Name="ReserveBTN" Click="ReserveBTN_Click" Content="Reserve" Height="20" HorizontalAlignment="Left" Margin="475,225,0,0" VerticalAlignment="Top" Width="75"/>
+
         <Button x:Name="SearchBTN" Click="SearchBTN_Click" Content="Search" HorizontalAlignment="Left" Height="20" Margin="347,225,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="351,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Height="34"/>
 

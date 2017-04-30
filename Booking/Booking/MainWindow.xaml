@@ -24,14 +24,16 @@
             <Label x:Name="label3_Copy" Content="Lastname:" HorizontalAlignment="Left" Margin="324,215,0,0" VerticalAlignment="Top" Width="71" Height="24"/>
             <Label x:Name="label3_Copy1" Content="Username:" HorizontalAlignment="Left" Margin="324,245,0,0" VerticalAlignment="Top" Width="71" Height="24"/>
             <Label x:Name="label3_Copy2" Content="Password:" HorizontalAlignment="Left" Margin="324,274,0,0" VerticalAlignment="Top" Width="71" Height="24"/>
-            <Button x:Name="SignUpBTN" Click="SignUpBTN_Click" Content="Sign up" HorizontalAlignment="Left" Margin="375,328,0,0" VerticalAlignment="Top" Width="75"/>
-            <CheckBox x:Name="checkBoxSignup" Content="I want to be a Host" HorizontalAlignment="Left" Margin="324,303,0,0" VerticalAlignment="Top" Width="166" Height="20"/>
+            <Button x:Name="SignUpBTN" Click="SignUpBTN_Click" Content="Sign up" HorizontalAlignment="Left" Margin="375,352,0,0" VerticalAlignment="Top" Width="75"/>
+            <CheckBox x:Name="checkBoxSignup" Content="I want to be a Host" HorizontalAlignment="Left" Margin="324,327,0,0" VerticalAlignment="Top" Width="166" Height="20"/>
             <TextBox x:Name="textFirstname" Height="21" Margin="400,188,5,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
             <TextBox x:Name="textLastname" Height="21" Margin="400,218,5,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
             <TextBox x:Name="textUsername" Height="20" Margin="400,251,5,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
             <PasswordBox x:Name="textPassword" Height="20" Margin="400,278,5,0" VerticalAlignment="Top"/>
             <TextBlock x:Name="blockError" IsEnabled="False" Margin="110,278,308,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="89"/>
             <DockPanel FlowDirection="LeftToRight" LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" Height="31" VerticalAlignment="Top" Margin="87,0,0,0"/>
+            <Label x:Name="asdas" Content="Repeat Pw:" HorizontalAlignment="Left" Margin="324,298,0,0" VerticalAlignment="Top" Width="71" Height="29"/>
+            <PasswordBox x:Name="repPass" Height="20" Margin="400,302,5,0" VerticalAlignment="Top"/>
         </Grid>
        
         <DockPanel  LastChildFill="False" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Grid.IsSharedSizeScope="True" HorizontalAlignment="Left"  Width="87" AutomationProperties.IsOffscreenBehavior="Onscreen">
@@ -40,7 +42,7 @@
        
         <Button x:Name="Search" Content="Search" HorizontalAlignment="Left" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="top" RenderTransformOrigin="-0.477,1.452" Margin="0,31,431,0"  FontWeight="Normal" BorderThickness="0" Click="Search_Click"/>
         <Button x:Name="reservation" Content="Reservation" HorizontalAlignment="Left" Width="86" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Height="31" VerticalAlignment="top" RenderTransformOrigin="-0.477,1.452" Margin="0,62,0,0" FontWeight="Normal" BorderThickness="0" Click="reservation_Click"  />
-        <Button x:Name="addHotel" Content="Add hotel" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Margin="-1,0,0,23" Height="27" VerticalAlignment="Bottom" Click="addHotel_Click" />
+        <Button x:Name="addHotel" Content="Add hotel" Visibility="Hidden" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrush}}" FontFamily="Times New Roman" Width="87" RenderTransformOrigin="-0.477,1.452"  FontWeight="Normal" BorderThickness="0" HorizontalAlignment="Left" Margin="-1,0,0,23" Height="27" VerticalAlignment="Bottom" Click="addHotel_Click" />
        
     </Grid>
 

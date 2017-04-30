@@ -21,7 +21,6 @@ namespace Booking
     public partial class MainWindow : Window
     {
         public static bool isLoggedIn;
-        public static bool isHostLoggedIn;
         Entities db = new Entities();
         public MainWindow()
         {
@@ -57,17 +56,22 @@ namespace Booking
                     if (element.ho_hostname == host.ho_hostname)
                         blockError.Text = "This host already exists, please choose another username!";
                 }
-                if (blockError.Text == "")
-                {
-                    db.ho_host.Add(host);
-                    db.SaveChanges();
 
-                    isHostLoggedIn = true;
-                    isLoggedIn = true;
-                    contentchange.Children.Clear();
-                    var nc = new Home();
-                    contentchange.Children.Add(nc);
-                }
+                if (textPassword.Password == repPass.Password)
+                {
+                    if (blockError.Text == "")
+                    {
+                        db.ho_host.Add(host);
+                        db.SaveChanges();
+
+                        addHotel.Visibility = Visibility.Visible;
+                        isLoggedIn = true;
+                        contentchange.Children.Clear();
+                        var nc = new Home();
+                        contentchange.Children.Add(nc);
+                    }
+                } else
+                    blockError.Text = "The passwords do not match, rewrite them please!";
             }
             else
             {
@@ -83,18 +87,21 @@ namespace Booking
                     if (element.u_username == user.u_username)
                         blockError.Text = "This user already exists, please choose another username!";
                 }
-                if (blockError.Text == "")
+                if (textPassword.Password == repPass.Password)
                 {
-                    db.u_user.Add(user);
-                    db.SaveChanges();
+                    if (blockError.Text == "")
+                    {
+                        db.u_user.Add(user);
+                        db.SaveChanges();
 
-                    isHostLoggedIn = false;
-                    isLoggedIn = true;
-                    contentchange.Children.Clear();
-                    var nc = new Home();
-                    contentchange.Children.Add(nc);
+                        isLoggedIn = true;
+                        contentchange.Children.Clear();
+                        var nc = new Home();
+                        contentchange.Children.Add(nc);
+                    }
                 }
-                
+                else
+                    blockError.Text = "The passwords do not match, rewrite them please!";
             }
         }
 
@@ -112,7 +119,7 @@ namespace Booking
                         var nc = new Home();
                         contentchange.Children.Add(nc);
                         isLoggedIn = true;
-                        isHostLoggedIn = true;
+                        addHotel.Visibility = Visibility.Visible;
                     }
                 }
                 if (isLoggedIn == false)
@@ -129,7 +136,6 @@ namespace Booking
                         var nc = new Home();
                         contentchange.Children.Add(nc);
                         isLoggedIn = true;
-                        isHostLoggedIn = false;
                     }
                    
                 }
@@ -141,7 +147,7 @@ namespace Booking
 
         private void addHotel_Click(object sender, RoutedEventArgs e)
         {
-            if (isLoggedIn && isHostLoggedIn)
+            if (isLoggedIn)
             {
                 contentchange.Children.Clear();
                 var nc = new AddHotel();

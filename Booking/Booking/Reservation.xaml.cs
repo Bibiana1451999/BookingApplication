@@ -30,14 +30,12 @@ namespace Booking
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            List<d_destination> lidest = db.d_destination.ToList();
-            foreach (d_destination element in lidest)
+            foreach (d_destination element in db.d_destination)
                 comboBoxCities.Items.Add(element.d_city+","+element.d_country);
 
             for(int i=1; i < 7; i++)
-            {
                 comboBoxBeds.Items.Add(i);
-            }
+            
 
             checkInDP.SelectedDate = DateTime.Today;
             checkOutDP.SelectedDate = DateTime.Today;
@@ -54,24 +52,23 @@ namespace Booking
                 string destination = comboBoxCities.SelectedItem.ToString();
                 string[] arr = destination.Split(',');
                 bool booked = false;
-                List<h_hotel> lihotels = new List<h_hotel>();
                 List<r_room> lirooms = new List<r_room>();
 
 
                 if ((DateTime.Compare((DateTime)checkInDP.SelectedDate,(DateTime)checkOutDP.SelectedDate)<0) && (DateTime.Compare((DateTime)checkInDP.SelectedDate, DateTime.Today)>=0))
                 {
-                    /*
-                    lirooms = (from h in db.h_hotel
+
+                  /*  listBoxRooms.ItemsSource = (from h in db.h_hotel
                               from r in h.r_room
                               from res in r.re_reservation
                               where h.h_d_city == arr[0] 
                               && h.h_d_country == arr[1] 
                               && r.r_beds == int.Parse(comboBoxBeds.SelectedItem.ToString())
-                              && (checkInDP.SelectedDate.Value > res.re_checkOut || checkOutDP.SelectedDate.Value < res.re_checkIn)
+                              && (checkInDP.SelectedDate.Value >= res.re_checkOut || checkOutDP.SelectedDate.Value <= res.re_checkIn)
                               select r)?.ToList();
-
-
+                    listBoxRooms.ItemsSource = lirooms;
                     */
+
 
                     foreach (h_hotel element in db.h_hotel)
                     {
@@ -93,14 +90,9 @@ namespace Booking
                                                 }
                                             }
                                         }
-                                        if (booked == false)
-                                        {
 
-                                            if(!lirooms.Contains(room))
-                                                lirooms.Add(room);
-                                            if(!lihotels.Contains(element))
-                                                lihotels.Add(element);
-                                        }
+                                        if (booked == false)
+                                            lirooms.Add(room);
                                         else
                                             booked = false;
                                     }
@@ -108,8 +100,6 @@ namespace Booking
                             }
                         }
                     }
-
-                        listBoxHotels.ItemsSource = lihotels;
                         listBoxRooms.ItemsSource = lirooms;
                 }
                 else
