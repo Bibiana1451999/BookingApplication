@@ -60,16 +60,18 @@ namespace Booking
 
                 if ((DateTime.Compare((DateTime)checkInDP.SelectedDate,(DateTime)checkOutDP.SelectedDate)<0) && (DateTime.Compare((DateTime)checkInDP.SelectedDate, DateTime.Today)>=0))
                 {
-                    listBoxRooms.ItemsSource = from h in db.h_hotel
+                    /*
+                    lirooms = (from h in db.h_hotel
                               from r in h.r_room
                               from res in r.re_reservation
                               where h.h_d_city == arr[0] 
                               && h.h_d_country == arr[1] 
                               && r.r_beds == int.Parse(comboBoxBeds.SelectedItem.ToString())
                               && (checkInDP.SelectedDate.Value > res.re_checkOut || checkOutDP.SelectedDate.Value < res.re_checkIn)
-                              select r;
+                              select r)?.ToList();
 
-                    /*
+
+                    */
 
                     foreach (h_hotel element in db.h_hotel)
                     {
@@ -93,18 +95,22 @@ namespace Booking
                                         }
                                         if (booked == false)
                                         {
-                                            lirooms.Add(room);
-                                            lihotels.Add(element);
+
+                                            if(!lirooms.Contains(room))
+                                                lirooms.Add(room);
+                                            if(!lihotels.Contains(element))
+                                                lihotels.Add(element);
                                         }
+                                        else
+                                            booked = false;
                                     }
                                 }
                             }
                         }
-                        */
+                    }
 
-                    //    listBoxHotels.ItemsSource = ergRooms;
-                     //   listBoxRooms.ItemsSource = lirooms;
-                    
+                        listBoxHotels.ItemsSource = lihotels;
+                        listBoxRooms.ItemsSource = lirooms;
                 }
                 else
                 {
