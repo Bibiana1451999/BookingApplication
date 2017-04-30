@@ -58,9 +58,9 @@ namespace Booking
                 List<r_room> lirooms = new List<r_room>();
 
 
-                if ((checkInDP.SelectedDate.Value < checkOutDP.SelectedDate.Value) && (checkInDP.SelectedDate.Value > DateTime.Today))
+                if ((DateTime.Compare((DateTime)checkInDP.SelectedDate,(DateTime)checkOutDP.SelectedDate)<0) && (DateTime.Compare((DateTime)checkInDP.SelectedDate, DateTime.Today)>=0))
                 {
-                    /*var erg = from h in db.h_hotel
+                    listBoxRooms.ItemsSource = from h in db.h_hotel
                               from r in h.r_room
                               from res in r.re_reservation
                               where h.h_d_city == arr[0] 
@@ -68,10 +68,10 @@ namespace Booking
                               && r.r_beds == int.Parse(comboBoxBeds.SelectedItem.ToString())
                               && (checkInDP.SelectedDate.Value > res.re_checkOut || checkOutDP.SelectedDate.Value < res.re_checkIn)
                               select r;
-                              */
 
+                    /*
 
-                   foreach (h_hotel element in db.h_hotel)
+                    foreach (h_hotel element in db.h_hotel)
                     {
                         if (element.h_d_city == arr[0] && element.h_d_country == arr[1])
                         {
@@ -100,16 +100,16 @@ namespace Booking
                                 }
                             }
                         }
+                        */
 
-
-                        listBoxHotels.ItemsSource = lihotels;
-                        listBoxRooms.ItemsSource = lirooms;
-                    }
+                    //    listBoxHotels.ItemsSource = ergRooms;
+                     //   listBoxRooms.ItemsSource = lirooms;
+                    
                 }
                 else
                 {
-                    if (checkInDP.SelectedDate.Value <= DateTime.Today)
-                        textBlock.Text = "You can only make reservations in the days to come!";
+                    if (checkInDP.SelectedDate.Value < DateTime.Today)
+                        textBlock.Text = "You can only make reservations today and in the days to come!";
                     else
                         textBlock.Text = "Check in should be earlier than check out!";
                 }
