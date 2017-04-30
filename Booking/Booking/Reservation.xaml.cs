@@ -119,10 +119,11 @@ namespace Booking
             {
                 r_room room = (r_room)listBoxRooms.SelectedItem;
                 re_reservation reserv = new re_reservation();
-
+                u_user user = (u_user)MainWindow.loggedInAcc; 
                 reserv.re_r_room = room.r_number;
                 reserv.re_checkIn = checkInDP.SelectedDate.Value;
                 reserv.re_checkOut = checkOutDP.SelectedDate.Value;
+                reserv.re_u_username = user.u_username;
 
                 db.re_reservation.Add(reserv);
                 db.SaveChanges();

@@ -21,6 +21,7 @@ namespace Booking
     public partial class MainWindow : Window
     {
         public static bool isLoggedIn;
+        public static object loggedInAcc;
         Entities db = new Entities();
         public MainWindow()
         {
@@ -65,7 +66,9 @@ namespace Booking
                         db.SaveChanges();
 
                         addHotel.Visibility = Visibility.Visible;
+                        reservation.Visibility = Visibility.Hidden;
                         isLoggedIn = true;
+                        loggedInAcc = host;
                         contentchange.Children.Clear();
                         var nc = new Home();
                         contentchange.Children.Add(nc);
@@ -94,6 +97,7 @@ namespace Booking
                         db.u_user.Add(user);
                         db.SaveChanges();
 
+                        loggedInAcc = user;
                         isLoggedIn = true;
                         contentchange.Children.Clear();
                         var nc = new Home();
@@ -119,7 +123,9 @@ namespace Booking
                         var nc = new Home();
                         contentchange.Children.Add(nc);
                         isLoggedIn = true;
+                        loggedInAcc = element;
                         addHotel.Visibility = Visibility.Visible;
+                        reservation.Visibility = Visibility.Hidden;
                     }
                 }
                 if (isLoggedIn == false)
@@ -136,6 +142,7 @@ namespace Booking
                         var nc = new Home();
                         contentchange.Children.Add(nc);
                         isLoggedIn = true;
+                        loggedInAcc = element;
                     }
                    
                 }

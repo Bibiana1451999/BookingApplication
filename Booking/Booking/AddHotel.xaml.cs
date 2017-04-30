@@ -41,6 +41,7 @@ namespace Booking
         private void AddHotelBN_Click(object sender, RoutedEventArgs e)
         {
             h_hotel hotel = new h_hotel();
+            ho_host host = (ho_host)MainWindow.loggedInAcc;
 
             string destination = comboBoxCities.SelectedItem.ToString();
             string[] arr = destination.Split(',');
@@ -52,6 +53,7 @@ namespace Booking
             hotel.h_zip =Convert.ToInt16(textBoxZip.Text);
             hotel.h_d_city = arr[0];
             hotel.h_d_country = arr[1];
+            hotel.h_ho_host = host.ho_hostname;
 
             var checking = from h in db.h_hotel
                            where h.h_name == hotel.h_name && h.h_d_city == hotel.h_d_city && h.h_d_country == hotel.h_d_country
