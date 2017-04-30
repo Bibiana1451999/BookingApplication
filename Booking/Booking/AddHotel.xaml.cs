@@ -55,13 +55,15 @@ namespace Booking
             hotel.h_d_country = arr[1];
             hotel.h_ho_host = host.ho_hostname;
 
-            var checking = from h in db.h_hotel
+            var checking = (from h in db.h_hotel
                            where h.h_name == hotel.h_name && h.h_d_city == hotel.h_d_city && h.h_d_country == hotel.h_d_country
-                           select h;
-            if (checking == null)
+                           select h).ToList();
+
+            if (checking.Count() == 0)
             {
                 db.h_hotel.Add(hotel);
                 db.SaveChanges();
+                errorBlock.Text = "Hotel added!";
             }
             else
             {
