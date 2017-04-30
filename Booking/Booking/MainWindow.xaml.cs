@@ -20,13 +20,12 @@ namespace Booking
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static bool isLoggedIn;
         public static object loggedInAcc;
         Entities db = new Entities();
         public MainWindow()
         {
             InitializeComponent();
-            isLoggedIn = false;
+            loggedInAcc = null;
        }
         static string sha256(string password)
         {
@@ -67,7 +66,6 @@ namespace Booking
 
                         addHotel.Visibility = Visibility.Visible;
                         reservation.Visibility = Visibility.Hidden;
-                        isLoggedIn = true;
                         loggedInAcc = host;
                         contentchange.Children.Clear();
                         var nc = new Home();
@@ -98,7 +96,6 @@ namespace Booking
                         db.SaveChanges();
 
                         loggedInAcc = user;
-                        isLoggedIn = true;
                         contentchange.Children.Clear();
                         var nc = new Home();
                         contentchange.Children.Add(nc);
@@ -122,13 +119,12 @@ namespace Booking
                         contentchange.Children.Clear();
                         var nc = new Home();
                         contentchange.Children.Add(nc);
-                        isLoggedIn = true;
                         loggedInAcc = element;
                         addHotel.Visibility = Visibility.Visible;
                         reservation.Visibility = Visibility.Hidden;
                     }
                 }
-                if (isLoggedIn == false)
+                if (loggedInAcc == null)
                 blockError.Text = "This host does not exist, make sure the username/password is correct, or sign up if you haven't already!";
             }
             else
@@ -141,12 +137,11 @@ namespace Booking
                         contentchange.Children.Clear();
                         var nc = new Home();
                         contentchange.Children.Add(nc);
-                        isLoggedIn = true;
                         loggedInAcc = element;
                     }
                    
                 }
-                if (isLoggedIn == false)
+                if (loggedInAcc == null)
                 blockError.Text = "This user does not exist, make sure the username/password is correct, or sign up if you haven't already!";
             }
 
@@ -154,7 +149,7 @@ namespace Booking
 
         private void addHotel_Click(object sender, RoutedEventArgs e)
         {
-            if (isLoggedIn)
+            if (loggedInAcc!=null)
             {
                 contentchange.Children.Clear();
                 var nc = new AddHotel();
@@ -165,7 +160,7 @@ namespace Booking
 
         private void reservation_Click(object sender, RoutedEventArgs e)
         {
-            if (isLoggedIn)
+            if (loggedInAcc != null)
             {
                 contentchange.Children.Clear();
                 var nc = new Reservation();
@@ -176,7 +171,7 @@ namespace Booking
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            if (isLoggedIn)
+            if (loggedInAcc != null)
             {
                 contentchange.Children.Clear();
                 var nc = new Search();
@@ -186,7 +181,7 @@ namespace Booking
 
         private void home_Click(object sender, RoutedEventArgs e)
         {
-            if (isLoggedIn)
+            if (loggedInAcc != null)
             {
                 contentchange.Children.Clear();
                 var nc = new Home();
