@@ -51,23 +51,25 @@ namespace Booking
             {
                 string destination = comboBoxCities.SelectedItem.ToString();
                 string[] arr = destination.Split(',');
-                bool booked = false;
+               // bool booked = false;
                 List<r_room> lirooms = new List<r_room>();
 
 
                 if ((DateTime.Compare((DateTime)checkInDP.SelectedDate,(DateTime)checkOutDP.SelectedDate)<0) && (DateTime.Compare((DateTime)checkInDP.SelectedDate, DateTime.Today)>=0))
                 {
-
-                  /*  listBoxRooms.ItemsSource = (from h in db.h_hotel
+                    string city = arr[0];
+                    string country = arr[1];
+                    int noBeds = int.Parse(comboBoxBeds.SelectedItem.ToString());
+                    listBoxRooms.ItemsSource = (from h in db.h_hotel
                               from r in h.r_room
                               from res in r.re_reservation
-                              where h.h_d_city == arr[0] 
-                              && h.h_d_country == arr[1] 
-                              && r.r_beds == int.Parse(comboBoxBeds.SelectedItem.ToString())
+                              where h.h_d_city == city
+                              && h.h_d_country == country 
+                              && r.r_beds == noBeds
                               && (checkInDP.SelectedDate.Value >= res.re_checkOut || checkOutDP.SelectedDate.Value <= res.re_checkIn)
-                              select r)?.ToList();
-                    listBoxRooms.ItemsSource = lirooms;
-                    */
+                              select r)?.ToList().Distinct();
+                  //  listBoxRooms.ItemsSource = lirooms;
+                    /*
 
 
                     foreach (h_hotel element in db.h_hotel)
@@ -100,7 +102,7 @@ namespace Booking
                             }
                         }
                     }
-                        listBoxRooms.ItemsSource = lirooms;
+                        listBoxRooms.ItemsSource = lirooms;*/
                 }
                 else
                 {
