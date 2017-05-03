@@ -51,13 +51,13 @@ namespace Booking
             {
                 string destination = comboBoxCities.SelectedItem.ToString();
                 string[] arr = destination.Split(',');
-               // bool booked = false;
+                bool booked = false;
                 List<r_room> lirooms = new List<r_room>();
 
 
                 if ((DateTime.Compare((DateTime)checkInDP.SelectedDate,(DateTime)checkOutDP.SelectedDate)<0) && (DateTime.Compare((DateTime)checkInDP.SelectedDate, DateTime.Today)>=0))
                 {
-                    string city = arr[0];
+                 /*   string city = arr[0];
                     string country = arr[1];
                     int noBeds = int.Parse(comboBoxBeds.SelectedItem.ToString());
                     listBoxRooms.ItemsSource = (from h in db.h_hotel
@@ -69,7 +69,7 @@ namespace Booking
                               && (checkInDP.SelectedDate.Value >= res.re_checkOut || checkOutDP.SelectedDate.Value <= res.re_checkIn)
                               select r)?.ToList().Distinct();
                   //  listBoxRooms.ItemsSource = lirooms;
-                    /*
+                    */
 
 
                     foreach (h_hotel element in db.h_hotel)
@@ -86,7 +86,7 @@ namespace Booking
                                         {
                                             if (reservation.re_r_room == room.r_number)
                                             {
-                                                if ((checkInDP.SelectedDate.Value < reservation.re_checkOut && checkInDP.SelectedDate.Value > reservation.re_checkIn) || (checkOutDP.SelectedDate.Value > reservation.re_checkIn && checkOutDP.SelectedDate.Value < reservation.re_checkOut))
+                                                if ((checkInDP.SelectedDate.Value <= reservation.re_checkOut && checkInDP.SelectedDate.Value >= reservation.re_checkIn) || (checkOutDP.SelectedDate.Value >= reservation.re_checkIn && checkOutDP.SelectedDate.Value <= reservation.re_checkOut))
                                                 {
                                                     booked = true;
                                                 }
@@ -102,7 +102,7 @@ namespace Booking
                             }
                         }
                     }
-                        listBoxRooms.ItemsSource = lirooms;*/
+                        listBoxRooms.ItemsSource = lirooms;
                 }
                 else
                 {

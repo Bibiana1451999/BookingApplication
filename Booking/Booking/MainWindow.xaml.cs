@@ -42,109 +42,119 @@ namespace Booking
         private void SignUpBTN_Click(object sender, RoutedEventArgs e)
         {
             blockError.Text = "";
-            if (checkBoxSignup.IsChecked == true)
-            {
-                ho_host host = new ho_host();
-                host.ho_hostname = textUsername.Text;
-                host.ho_fistname = textFirstname.Text;
-                host.ho_lastname = textLastname.Text;
-                host.ho_password = sha256(textPassword.Password);
-
-                List<ho_host> lihosts = db.ho_host.ToList();
-                foreach (ho_host element in lihosts)
-                {
-                    if (element.ho_hostname == host.ho_hostname)
-                        blockError.Text = "This host already exists, please choose another username!";
-                }
-
-                if (textPassword.Password == repPass.Password)
-                {
-                    if (blockError.Text == "")
-                    {
-                        db.ho_host.Add(host);
-                        db.SaveChanges();
-
-                        addHotel.Visibility = Visibility.Visible;
-                        reservation.Visibility = Visibility.Hidden;
-                        loggedInAcc = host;
-                        contentchange.Children.Clear();
-                        var nc = new Home();
-                        contentchange.Children.Add(nc);
-                    }
-                } else
-                    blockError.Text = "The passwords do not match, rewrite them please!";
-            }
+            if (textUsername.Text == "" || textFirstname.Text == "" || textLastname.Text == "" || textPassword.Password == "" || repPass.Password == "")
+                blockError.Text = "Please do not leave anything empty!";
             else
             {
-                u_user user = new u_user();
-                user.u_firstName = textFirstname.Text;
-                user.u_lastName = textLastname.Text;
-                user.u_username = textUsername.Text;
-                user.u_password = sha256(textPassword.Password);
+                if (checkBoxSignup.IsChecked == true)
+                {
+                    ho_host host = new ho_host();
+                    host.ho_hostname = textUsername.Text;
+                    host.ho_fistname = textFirstname.Text;
+                    host.ho_lastname = textLastname.Text;
+                    host.ho_password = sha256(textPassword.Password);
 
-                List<u_user> liusers = db.u_user.ToList();
-                foreach (u_user element in liusers)
-                {
-                    if (element.u_username == user.u_username)
-                        blockError.Text = "This user already exists, please choose another username!";
-                }
-                if (textPassword.Password == repPass.Password)
-                {
-                    if (blockError.Text == "")
+                    List<ho_host> lihosts = db.ho_host.ToList();
+                    foreach (ho_host element in lihosts)
                     {
-                        db.u_user.Add(user);
-                        db.SaveChanges();
-
-                        loggedInAcc = user;
-                        contentchange.Children.Clear();
-                        var nc = new Home();
-                        contentchange.Children.Add(nc);
+                        if (element.ho_hostname == host.ho_hostname)
+                            blockError.Text = "This host already exists, please choose another username!";
                     }
+
+                    if (textPassword.Password == repPass.Password)
+                    {
+                        if (blockError.Text == "")
+                        {
+                            db.ho_host.Add(host);
+                            db.SaveChanges();
+
+                            addHotel.Visibility = Visibility.Visible;
+                            reservation.Visibility = Visibility.Hidden;
+                            loggedInAcc = host;
+                            contentchange.Children.Clear();
+                            var nc = new Home();
+                            contentchange.Children.Add(nc);
+                        }
+                    }
+                    else
+                        blockError.Text = "The passwords do not match, rewrite them please!";
                 }
                 else
-                    blockError.Text = "The passwords do not match, rewrite them please!";
+                {
+                    u_user user = new u_user();
+                    user.u_firstName = textFirstname.Text;
+                    user.u_lastName = textLastname.Text;
+                    user.u_username = textUsername.Text;
+                    user.u_password = sha256(textPassword.Password);
+
+                    List<u_user> liusers = db.u_user.ToList();
+                    foreach (u_user element in liusers)
+                    {
+                        if (element.u_username == user.u_username)
+                            blockError.Text = "This user already exists, please choose another username!";
+                    }
+                    if (textPassword.Password == repPass.Password)
+                    {
+                        if (blockError.Text == "")
+                        {
+                            db.u_user.Add(user);
+                            db.SaveChanges();
+
+                            loggedInAcc = user;
+                            contentchange.Children.Clear();
+                            var nc = new Home();
+                            contentchange.Children.Add(nc);
+                        }
+                    }
+                    else
+                        blockError.Text = "The passwords do not match, rewrite them please!";
+                }
             }
         }
 
         private void LogInBTN_Click(object sender, RoutedEventArgs e)
         {
             blockError.Text = "";
-            if (checkBoxLogin.IsChecked == true)
-            {
-                List<ho_host> lihosts = db.ho_host.ToList();
-                foreach(ho_host element in lihosts)
-                {
-                    if(element.ho_hostname == logInUsername.Text && element.ho_password == sha256(logInPassword.Password))
-                    {
-                        contentchange.Children.Clear();
-                        var nc = new Home();
-                        contentchange.Children.Add(nc);
-                        loggedInAcc = element;
-                        addHotel.Visibility = Visibility.Visible;
-                        reservation.Visibility = Visibility.Hidden;
-                    }
-                }
-                if (loggedInAcc == null)
-                blockError.Text = "This host does not exist, make sure the username/password is correct, or sign up if you haven't already!";
-            }
+            if (logInUsername.Text == "" || logInPassword.Password == "")
+                blockError.Text = "Please do not leave anything empty!";
             else
             {
-                List<u_user> liusers = db.u_user.ToList();
-                foreach (u_user element in liusers)
+                if (checkBoxLogin.IsChecked == true)
                 {
-                    if (element.u_username == logInUsername.Text && element.u_password.Trim() == sha256(logInPassword.Password))
+                    List<ho_host> lihosts = db.ho_host.ToList();
+                    foreach (ho_host element in lihosts)
                     {
-                        contentchange.Children.Clear();
-                        var nc = new Home();
-                        contentchange.Children.Add(nc);
-                        loggedInAcc = element;
+                        if (element.ho_hostname == logInUsername.Text && element.ho_password == sha256(logInPassword.Password))
+                        {
+                            contentchange.Children.Clear();
+                            var nc = new Home();
+                            contentchange.Children.Add(nc);
+                            loggedInAcc = element;
+                            addHotel.Visibility = Visibility.Visible;
+                            reservation.Visibility = Visibility.Hidden;
+                        }
                     }
-                   
+                    if (loggedInAcc == null)
+                        blockError.Text = "This host does not exist, make sure the username/password is correct, or sign up if you haven't already!";
                 }
-                if (loggedInAcc == null)
-                blockError.Text = "This user does not exist, make sure the username/password is correct, or sign up if you haven't already!";
-            }
+                else
+                {
+                    List<u_user> liusers = db.u_user.ToList();
+                    foreach (u_user element in liusers)
+                    {
+                        if (element.u_username == logInUsername.Text && element.u_password.Trim() == sha256(logInPassword.Password))
+                        {
+                            contentchange.Children.Clear();
+                            var nc = new Home();
+                            contentchange.Children.Add(nc);
+                            loggedInAcc = element;
+                        }
 
+                    }
+                    if (loggedInAcc == null)
+                        blockError.Text = "This user does not exist, make sure the username/password is correct, or sign up if you haven't already!";
+                }
+            }
         }
 
         private void addHotel_Click(object sender, RoutedEventArgs e)
